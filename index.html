@@ -638,11 +638,125 @@
       color: var(--text-muted);
     }
 
+    /* ── Skills ─────────────────────────────────────────────────── */
+    .skills-layout {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .skill-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .skill-group-title {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .skill-group-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .pill:hover {
+      color: var(--text-primary);
+      border-color: rgba(183,141,224,0.3);
+      background: rgba(183,141,224,0.08);
+    }
+
+    .pill--lit {
+      color: var(--blush);
+      border-color: rgba(212,160,200,0.25);
+      background: rgba(212,160,200,0.07);
+    }
+
+    /* proficiency bars */
+    .prof-bars {
+      margin-top: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      padding: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .prof-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 72px;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .prof-name {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .prof-track {
+      height: 5px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .prof-fill {
+      height: 100%;
+      width: 0;
+      border-radius: 100px;
+      background: var(--col);
+      box-shadow: 0 0 8px var(--col);
+      transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .prof-fill.animated { width: var(--pct); }
+
+    .prof-pct {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: right;
+      letter-spacing: 0.04em;
+    }
+
     /* ── Responsive ─────────────────────────────────────────────── */
     @media (max-width: 768px) {
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-stats { grid-template-columns: 1fr 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
+      .skills-layout { grid-template-columns: 1fr 1fr; }
+      .prof-row { grid-template-columns: 120px 1fr 60px; }
     }
 
     @media (max-width: 640px) {
@@ -915,7 +1029,132 @@
     </div>
   </section>
 
-  <div id="skills"></div>
+  <!-- ── Skills ───────────────────────────────────────────────── -->
+  <section id="skills">
+    <p class="section-label">Skills</p>
+    <h2 class="section-title reveal">What I work with</h2>
+
+    <div class="skills-layout">
+
+      <div class="skill-group reveal" style="--delay:0.05s">
+        <h3 class="skill-group-title">
+          <span class="skill-group-dot" style="background:var(--mauve)"></span>
+          Languages
+        </h3>
+        <div class="skill-pills">
+          <span class="pill pill--lit">Python</span>
+          <span class="pill">SQL</span>
+          <span class="pill">C++</span>
+          <span class="pill">R</span>
+          <span class="pill">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal" style="--delay:0.1s">
+        <h3 class="skill-group-title">
+          <span class="skill-group-dot" style="background:var(--dusk-blue)"></span>
+          Cloud &amp; Data
+        </h3>
+        <div class="skill-pills">
+          <span class="pill pill--lit">AWS</span>
+          <span class="pill pill--lit">Azure</span>
+          <span class="pill">ETL Pipelines</span>
+          <span class="pill">Spark</span>
+          <span class="pill">Airflow</span>
+          <span class="pill">PostgreSQL</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal" style="--delay:0.15s">
+        <h3 class="skill-group-title">
+          <span class="skill-group-dot" style="background:var(--rose)"></span>
+          Machine Learning
+        </h3>
+        <div class="skill-pills">
+          <span class="pill pill--lit">Deep Learning</span>
+          <span class="pill pill--lit">NLP</span>
+          <span class="pill">Scikit-learn</span>
+          <span class="pill">TensorFlow</span>
+          <span class="pill">PyTorch</span>
+          <span class="pill">XGBoost</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal" style="--delay:0.2s">
+        <h3 class="skill-group-title">
+          <span class="skill-group-dot" style="background:var(--amber)"></span>
+          Robotics &amp; Sensing
+        </h3>
+        <div class="skill-pills">
+          <span class="pill pill--lit">LiDAR</span>
+          <span class="pill pill--lit">Sensor Fusion</span>
+          <span class="pill">ROS</span>
+          <span class="pill">Simulation</span>
+          <span class="pill">SLAM</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal" style="--delay:0.25s">
+        <h3 class="skill-group-title">
+          <span class="skill-group-dot" style="background:var(--purple)"></span>
+          Visualisation &amp; BI
+        </h3>
+        <div class="skill-pills">
+          <span class="pill">Matplotlib</span>
+          <span class="pill">Seaborn</span>
+          <span class="pill">Plotly</span>
+          <span class="pill">Power BI</span>
+          <span class="pill">Tableau</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal" style="--delay:0.3s">
+        <h3 class="skill-group-title">
+          <span class="skill-group-dot" style="background:var(--blush)"></span>
+          Other
+        </h3>
+        <div class="skill-pills">
+          <span class="pill">Blockchain</span>
+          <span class="pill">Web3</span>
+          <span class="pill">Docker</span>
+          <span class="pill">Git</span>
+          <span class="pill">Agile / Scrum</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Proficiency bars for core skills -->
+    <div class="prof-bars reveal" style="--delay:0.35s">
+      <div class="prof-row">
+        <span class="prof-name">Python</span>
+        <div class="prof-track"><div class="prof-fill" style="--pct:95%; --col:var(--mauve)"></div></div>
+        <span class="prof-pct">Expert</span>
+      </div>
+      <div class="prof-row">
+        <span class="prof-name">Machine Learning</span>
+        <div class="prof-track"><div class="prof-fill" style="--pct:88%; --col:var(--rose)"></div></div>
+        <span class="prof-pct">Advanced</span>
+      </div>
+      <div class="prof-row">
+        <span class="prof-name">Cloud (AWS / Azure)</span>
+        <div class="prof-track"><div class="prof-fill" style="--pct:82%; --col:var(--dusk-blue)"></div></div>
+        <span class="prof-pct">Advanced</span>
+      </div>
+      <div class="prof-row">
+        <span class="prof-name">SQL &amp; Data Engineering</span>
+        <div class="prof-track"><div class="prof-fill" style="--pct:85%; --col:var(--purple)"></div></div>
+        <span class="prof-pct">Advanced</span>
+      </div>
+      <div class="prof-row">
+        <span class="prof-name">LiDAR / Robotics</span>
+        <div class="prof-track"><div class="prof-fill" style="--pct:78%; --col:var(--amber)"></div></div>
+        <span class="prof-pct">Proficient</span>
+      </div>
+    </div>
+
+  </section>
+
   <div id="contact"></div>
 
   <!-- ── Aurora canvas script ──────────────────────────────────── -->
@@ -993,6 +1232,19 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Proficiency bar animation ───────────────────────────────
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.prof-fill').forEach(bar => bar.classList.add('animated'));
+          barObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const profBars = document.querySelector('.prof-bars');
+    if (profBars) barObserver.observe(profBars);
   </script>
 </body>
 </html>
