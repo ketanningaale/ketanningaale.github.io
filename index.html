@@ -293,7 +293,110 @@
       color: var(--text-primary);
     }
 
+    /* ── About ──────────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text em {
+      font-style: normal;
+      background: linear-gradient(120deg, var(--mauve), var(--rose));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-body {
+      margin-top: 1.25rem;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .about-body strong {
+      color: var(--blush);
+      font-weight: 500;
+    }
+
+    .about-links {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-sm {
+      padding: 0.55rem 1.1rem;
+      font-size: 0.82rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: border-color 0.3s, transform 0.3s;
+      animation-delay: var(--delay, 0s);
+    }
+
+    .stat-card:hover {
+      border-color: rgba(183,141,224,0.3);
+      transform: translateY(-3px);
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--mauve), var(--amber));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .stat-num em {
+      font-style: normal;
+      font-size: 1.1rem;
+    }
+
+    .stat-desc {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    /* ── Scroll reveal ──────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      transition-delay: var(--delay, 0s);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 640px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
@@ -344,8 +447,61 @@
     </div>
   </section>
 
-  <!-- Placeholder anchors for nav links (sections added next) -->
-  <div id="about"></div>
+  <!-- ── About ─────────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="about-grid">
+
+      <!-- Left: text -->
+      <div class="about-text reveal">
+        <p class="section-label">About me</p>
+        <h2 class="section-title">Data that drives<br/><em>real outcomes</em></h2>
+        <p class="about-body">
+          I'm a data scientist who moves between the technical and the tangible —
+          calibrating LiDAR sensors for self-driving vehicles one day, building
+          cloud ETL pipelines the next. I completed my
+          <strong>MSc Data Science at the University of Southampton</strong> on a
+          Presidential International Scholarship, and bring hands-on experience
+          across machine learning, NLP, and large-scale analytics.
+        </p>
+        <p class="about-body">
+          Outside the terminal I work on the frontline at Boots UK, which keeps
+          me grounded in how data decisions land in the real world.
+        </p>
+        <div class="about-links">
+          <a href="https://www.linkedin.com/in/ketann-ingaale" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.kaggle.com" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.946l6.204-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.332z"/></svg>
+            Kaggle
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: stat cards -->
+      <div class="about-stats">
+        <div class="stat-card reveal" style="--delay:0.1s">
+          <span class="stat-num">95<em>%</em></span>
+          <span class="stat-desc">reduction in LiDAR localisation error for autonomous vehicles</span>
+        </div>
+        <div class="stat-card reveal" style="--delay:0.2s">
+          <span class="stat-num">Top<em>&nbsp;25%</em></span>
+          <span class="stat-desc">ranking on Kaggle competitive ML</span>
+        </div>
+        <div class="stat-card reveal" style="--delay:0.3s">
+          <span class="stat-num">40<em>%</em></span>
+          <span class="stat-desc">improvement in grievance transparency via blockchain system</span>
+        </div>
+        <div class="stat-card reveal" style="--delay:0.4s">
+          <span class="stat-num">MSc</span>
+          <span class="stat-desc">Data Science — University of Southampton, Presidential Scholar</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <div id="experience"></div>
   <div id="projects"></div>
   <div id="skills"></div>
@@ -417,6 +573,15 @@
     window.addEventListener('resize', () => { resize(); });
     init();
     draw();
+
+    // ── Scroll reveal ──────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
