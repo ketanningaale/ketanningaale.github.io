@@ -526,10 +526,123 @@
       padding: 0.25rem 0.75rem;
     }
 
+    /* ── Projects ───────────────────────────────────────────────── */
+    .projects-grid {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .proj-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+      cursor: default;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(var(--accent), 0.35);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    }
+
+    /* accent glow that follows mouse-hover */
+    .proj-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 50% 0%,
+        rgba(var(--accent), 0.12) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+
+    .proj-card:hover .proj-glow { opacity: 1; }
+
+    .proj-inner {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .proj-icon {
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    .proj-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .proj-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .proj-desc strong { color: var(--blush); font-weight: 600; }
+
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.25rem;
+    }
+
+    .proj-tags span {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.2rem 0.65rem;
+      letter-spacing: 0.03em;
+    }
+
+    .proj-stat {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .proj-stat-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, rgb(var(--accent)), var(--blush));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .proj-stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
     /* ── Responsive ─────────────────────────────────────────────── */
     @media (max-width: 768px) {
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-stats { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
@@ -716,8 +829,92 @@
     </div>
   </section>
 
-  <div id="projects"></div>
-  <div id="projects"></div>
+  <!-- ── Projects ─────────────────────────────────────────────── -->
+  <section id="projects">
+    <p class="section-label">Projects</p>
+    <h2 class="section-title reveal">Things I've built</h2>
+
+    <div class="projects-grid">
+
+      <div class="proj-card reveal" style="--delay:0.1s; --accent:124,92,191">
+        <div class="proj-glow"></div>
+        <div class="proj-inner">
+          <div class="proj-icon">&#x26D3;&#xFE0F;</div>
+          <h3 class="proj-title">Blockchain Grievance System</h3>
+          <p class="proj-desc">
+            A transparent, tamper-proof grievance handling platform backed by smart contracts.
+            Improved transparency by <strong>40%</strong> and eliminated manual record manipulation.
+          </p>
+          <div class="proj-tags">
+            <span>Blockchain</span><span>Smart Contracts</span><span>Python</span><span>Web3</span>
+          </div>
+          <div class="proj-stat">
+            <span class="proj-stat-num">40%</span>
+            <span class="proj-stat-label">transparency gain</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" style="--delay:0.2s; --accent:74,111,165">
+        <div class="proj-glow"></div>
+        <div class="proj-inner">
+          <div class="proj-icon">&#x1F697;</div>
+          <h3 class="proj-title">Autonomous Vehicle LiDAR Calibration</h3>
+          <p class="proj-desc">
+            Sensor-fusion pipeline for GPS-denied environments. Novel calibration algorithm
+            slashed localisation error by <strong>95%</strong>, enabling reliable indoor &amp; tunnel navigation.
+          </p>
+          <div class="proj-tags">
+            <span>LiDAR</span><span>Sensor Fusion</span><span>ROS</span><span>Python</span><span>C++</span>
+          </div>
+          <div class="proj-stat">
+            <span class="proj-stat-num">95%</span>
+            <span class="proj-stat-label">error reduction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" style="--delay:0.3s; --accent:183,141,224">
+        <div class="proj-glow"></div>
+        <div class="proj-inner">
+          <div class="proj-icon">&#x1F30D;</div>
+          <h3 class="proj-title">Global GDP Shift Analysis</h3>
+          <p class="proj-desc">
+            Deep-learning and simulation modelling project analysing multi-decade GDP
+            trends across 180 countries, with rich interactive visualisations and forecasting.
+          </p>
+          <div class="proj-tags">
+            <span>Deep Learning</span><span>Simulation</span><span>Data Viz</span><span>Python</span>
+          </div>
+          <div class="proj-stat">
+            <span class="proj-stat-num">180</span>
+            <span class="proj-stat-label">countries analysed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" style="--delay:0.4s; --accent:212,149,106">
+        <div class="proj-glow"></div>
+        <div class="proj-inner">
+          <div class="proj-icon">&#x2601;&#xFE0F;</div>
+          <h3 class="proj-title">Cloud ETL &amp; Predictive Pipelines</h3>
+          <p class="proj-desc">
+            End-to-end data pipelines on AWS &amp; Azure for churn prediction and demand forecasting,
+            serving 50k+ daily users with 35% lower latency than legacy systems.
+          </p>
+          <div class="proj-tags">
+            <span>AWS</span><span>Azure</span><span>ETL</span><span>SQL</span><span>ML</span>
+          </div>
+          <div class="proj-stat">
+            <span class="proj-stat-num">50k+</span>
+            <span class="proj-stat-label">daily users</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <div id="skills"></div>
   <div id="contact"></div>
 
