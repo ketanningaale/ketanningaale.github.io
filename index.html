@@ -638,6 +638,19 @@
       color: var(--text-muted);
     }
 
+    .proj-doi {
+      font-size: 0.78rem;
+      color: var(--mauve);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(183,141,224,0.3);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .proj-doi:hover {
+      color: var(--blush);
+      border-color: var(--blush);
+    }
+
     .proj-type-badge {
       display: inline-block;
       font-size: 0.68rem;
@@ -1032,12 +1045,12 @@
           <span class="stat-desc">Data Science — University of Southampton</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.2s">
-          <span class="stat-num">2<em>×</em></span>
-          <span class="stat-desc">published research papers on blockchain-based grievance systems</span>
+          <span class="stat-num">Pub.</span>
+          <span class="stat-desc">peer-reviewed publication — Blockchain-Based Grievance Management System</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.3s">
-          <span class="stat-num">1</span>
-          <span class="stat-desc">granted patent — Grievance Redressal System</span>
+          <span class="stat-num">Healf</span>
+          <span class="stat-desc">Analytics Engineer building health data pipelines in HealthTech</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.4s">
           <span class="stat-num">3</span>
@@ -1196,7 +1209,7 @@
   <!-- ── Research & Projects ───────────────────────────────────── -->
   <section id="projects">
     <p class="section-label">Research &amp; Projects</p>
-    <h2 class="section-title reveal">Publications, patents &amp; work</h2>
+    <h2 class="section-title reveal">Published work &amp; projects</h2>
 
     <div class="projects-grid">
 
@@ -1207,60 +1220,21 @@
           <div class="proj-type-badge">Publication</div>
           <h3 class="proj-title">Blockchain-Based Grievance Management System</h3>
           <p class="proj-desc">
-            Research paper proposing a transparent, tamper-proof platform for managing institutional
+            Peer-reviewed research paper proposing a transparent, tamper-proof platform for managing institutional
             grievances using blockchain and smart contracts — eliminating manual record manipulation.
           </p>
           <div class="proj-tags">
             <span>Blockchain</span><span>Smart Contracts</span><span>Distributed Systems</span>
           </div>
           <div class="proj-stat">
-            <span class="proj-stat-num">Pub.</span>
-            <span class="proj-stat-label">peer-reviewed research</span>
+            <a href="https://doi.org/10.1007/978-981-15-5788-0_20" target="_blank" rel="noopener" class="proj-doi">
+              &#x1F517; doi.org/10.1007/978-981-15-5788-0_20
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="proj-card reveal" style="--delay:0.2s; --accent:74,111,165">
-        <div class="proj-glow"></div>
-        <div class="proj-inner">
-          <div class="proj-icon">&#x1F4DA;</div>
-          <div class="proj-type-badge">Publication</div>
-          <h3 class="proj-title">Blockchain-based Institute Grievance Redressal System</h3>
-          <p class="proj-desc">
-            Second publication extending the grievance redressal framework for academic institutions,
-            with a focus on scalability, transparency, and student welfare.
-          </p>
-          <div class="proj-tags">
-            <span>Blockchain</span><span>Web3</span><span>Academic Systems</span>
-          </div>
-          <div class="proj-stat">
-            <span class="proj-stat-num">Pub.</span>
-            <span class="proj-stat-label">peer-reviewed research</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-card reveal" style="--delay:0.3s; --accent:212,149,106">
-        <div class="proj-glow"></div>
-        <div class="proj-inner">
-          <div class="proj-icon">&#x2696;&#xFE0F;</div>
-          <div class="proj-type-badge proj-type-badge--patent">Patent</div>
-          <h3 class="proj-title">Grievance Redressal System</h3>
-          <p class="proj-desc">
-            Granted patent for an innovative grievance redressal system, formalising the
-            blockchain-based approach into intellectual property recognised at a national level.
-          </p>
-          <div class="proj-tags">
-            <span>Patent</span><span>Blockchain</span><span>Innovation</span>
-          </div>
-          <div class="proj-stat">
-            <span class="proj-stat-num">&#x2713;</span>
-            <span class="proj-stat-label">granted patent</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-card reveal" style="--delay:0.4s; --accent:183,141,224">
+      <div class="proj-card reveal" style="--delay:0.2s; --accent:183,141,224">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F3E5;</div>
