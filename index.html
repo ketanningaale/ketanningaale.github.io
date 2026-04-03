@@ -948,6 +948,171 @@
       color: var(--text-muted);
     }
 
+    /* ── Dissertation featured card ────────────────────────────── */
+    .dissertation-card {
+      background: linear-gradient(135deg, rgba(59,47,110,0.5) 0%, rgba(74,111,165,0.2) 100%);
+      border: 1px solid rgba(183,141,224,0.25);
+      border-radius: 20px;
+      padding: 2.25rem 2.5rem;
+      margin-bottom: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dissertation-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(183,141,224,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .dissertation-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid rgba(212,149,106,0.35);
+      border-radius: 100px;
+      padding: 0.25rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .dissertation-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    .dissertation-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .dissertation-meta span strong { color: var(--mauve); font-weight: 500; }
+
+    .dissertation-body {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .dissertation-body strong { color: var(--blush); font-weight: 600; }
+
+    .dissertation-score {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      margin-top: 1.25rem;
+      font-family: var(--font-display);
+    }
+
+    .dissertation-score-num {
+      font-size: 2.25rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, var(--mauve), var(--amber));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .dissertation-score-label { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ── Recommendation ─────────────────────────────────────────── */
+    .recommendation-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem 2.25rem;
+      position: relative;
+    }
+
+    .recommendation-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 1rem; left: 1.75rem;
+      font-family: var(--font-display);
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--purple-dim);
+      pointer-events: none;
+    }
+
+    .rec-body {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-style: italic;
+      padding-top: 1.5rem;
+    }
+
+    .rec-body strong { color: var(--blush); font-weight: 500; font-style: normal; }
+
+    .rec-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .rec-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--dusk-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .rec-name { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
+    .rec-role { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+    /* ── Achievement pills ──────────────────────────────────────── */
+    .achievements-list {
+      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .ach-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+    }
+
+    .ach-pill .ach-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--mauve);
+      flex-shrink: 0;
+    }
+
     @media (max-width: 640px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
@@ -958,6 +1123,7 @@
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
       .prof-row { grid-template-columns: 100px 1fr 56px; }
       .skills-layout { grid-template-columns: 1fr; }
+      .dissertation-card { padding: 1.5rem; }
     }
   </style>
 </head>
@@ -980,7 +1146,7 @@
     <canvas id="aurora"></canvas>
 
     <div class="hero-content">
-      <span class="hero-tag">Analytics Engineer · HealthTech · Data &amp; AI</span>
+      <span class="hero-tag">Analytics Engineer &amp; AI Researcher · HealthTech · Data Science</span>
 
       <h1 class="hero-name">
         <span class="line-1">Ketann</span>
@@ -988,8 +1154,8 @@
       </h1>
 
       <p class="hero-sub">
-        Building data systems that <strong>bridge science, technology &amp; human wellbeing</strong>.<br/>
-        Analytics Engineer at Healf · MSc Data Science, University of Southampton
+        Multidisciplinary researcher bridging <strong>AI, health data &amp; human understanding</strong>.<br/>
+        Analytics Engineer at Healf &nbsp;·&nbsp; MSc Data Science, Southampton &nbsp;·&nbsp; Presidential Scholar
       </p>
 
       <div class="hero-cta">
@@ -1011,20 +1177,19 @@
       <!-- Left: text -->
       <div class="about-text reveal">
         <p class="section-label">About me</p>
-        <h2 class="section-title">Data that powers<br/><em>human wellbeing</em></h2>
+        <h2 class="section-title">Bridging AI, data<br/><em>&amp; human wellbeing</em></h2>
         <p class="about-body">
-          I'm a Data Science professional passionate about transforming complex data
-          into meaningful insights that empower health and wellbeing. As an
-          <strong>Analytics Engineer at Healf</strong>, I help build scalable data systems
-          that bridge science, technology, and human understanding — driving smarter
-          decisions and enabling more personalised health experiences.
+          I'm an aspiring AI/ML researcher with a multidisciplinary foundation spanning
+          Data Science, Computer Engineering, and Finance. As <strong>Analytics Engineer at Healf</strong>,
+          I build the data and ML infrastructure that powers evidence-backed health
+          personalisation — connecting biomarker science with real-world outcomes.
         </p>
         <p class="about-body">
-          My background includes an <strong>MSc in Data Science from the University of
-          Southampton</strong>, where I specialised in large-scale trend analysis and
-          data-driven research. I enjoy connecting the dots between analytics, AI,
-          and human behaviour — from biomarker data and health insights to global
-          economic trends.
+          I hold an <strong>MSc Data Science from the University of Southampton</strong>
+          (Southampton Presidential International Scholarship), where my dissertation on
+          LiDAR localisation for autonomous vehicles scored <strong>77/100</strong>.
+          I'm driven by interpretable, generalizable, and ethically aligned AI across
+          health, finance, and dynamic decision-making environments.
         </p>
         <div class="about-links">
           <a href="https://www.linkedin.com/in/ketanningaale" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
@@ -1041,16 +1206,16 @@
       <!-- Right: stat cards -->
       <div class="about-stats">
         <div class="stat-card reveal" style="--delay:0.1s">
-          <span class="stat-num">MSc</span>
-          <span class="stat-desc">Data Science — University of Southampton</span>
+          <span class="stat-num">77<em>/100</em></span>
+          <span class="stat-desc">MSc dissertation score — LiDAR localisation for autonomous vehicles</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.2s">
-          <span class="stat-num">Pub.</span>
-          <span class="stat-desc">peer-reviewed publication — Blockchain-Based Grievance Management System</span>
+          <span class="stat-num">1<em>/25</em></span>
+          <span class="stat-desc">Southampton Presidential International Scholarship recipient</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.3s">
-          <span class="stat-num">Healf</span>
-          <span class="stat-desc">Analytics Engineer building health data pipelines in HealthTech</span>
+          <span class="stat-num">95<em>%</em></span>
+          <span class="stat-desc">reduction in localisation error achieved in dissertation research</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.4s">
           <span class="stat-num">3</span>
@@ -1074,19 +1239,19 @@
         <div class="tl-card">
           <div class="tl-header">
             <div>
-              <span class="tl-role">Analytics Engineer</span>
+              <span class="tl-role">Analytics Engineer &amp; Researcher</span>
               <span class="tl-company">Healf · London, UK</span>
             </div>
             <span class="tl-date">Sep 2025 – Present</span>
           </div>
           <ul class="tl-bullets">
-            <li>Designing and maintaining scalable, efficient data pipelines and models to support Healf's holistic wellbeing mission.</li>
-            <li>Developing analytics systems that drive smarter decisions across products, marketing, and research.</li>
-            <li>Integrating health, biomarker, and lifestyle data into unified frameworks to enhance personalisation and scientific understanding.</li>
-            <li>Collaborating cross-functionally to ensure data quality, accessibility, and transparency across the organisation.</li>
+            <li>Designed the <strong>Evidence Graph</strong> — a scalable data and ML infrastructure connecting products to mechanisms, biomarker outcomes, and research-grade claims, forming the foundation for Healf's evidence-backed recommendation system.</li>
+            <li>Led applied ML research on wellness personalisation, developing algorithms that integrate biomarker, behavioural, and preference data to generate adaptive recommendations with quantifiable confidence scores.</li>
+            <li>Initiated the <strong>Healf Outcomes Program</strong>, conducting real-world cohort studies with Healf Zone users to measure pre/post biomarker shifts, establishing a proprietary research backbone for the "Healf Recommended" standard.</li>
+            <li>Designed and maintained scalable data pipelines and models; integrated health and lifestyle data into unified analytics frameworks to drive smarter decisions across products, marketing, and research.</li>
           </ul>
           <div class="tl-tags">
-            <span>DBT</span><span>Data Engineering</span><span>HealthTech</span><span>Analytics</span><span>Biomarker Data</span>
+            <span>DBT</span><span>Data Engineering</span><span>ML Research</span><span>Biomarker Analytics</span><span>HealthTech</span>
           </div>
         </div>
       </div>
@@ -1148,13 +1313,13 @@
             <span class="tl-date">Jun 2022 – Aug 2023</span>
           </div>
           <ul class="tl-bullets">
-            <li>Analysed client workflows to identify inefficiencies, designing tailored solutions using data analytics and Oracle CPQ.</li>
-            <li>Collaborated with cross-functional teams to address technical issues with a data-driven approach.</li>
-            <li>Managed support incidents through root cause analysis and troubleshooting, ensuring smooth operations and high customer satisfaction.</li>
-            <li>Translated technical details into user-friendly solutions for diverse non-technical stakeholders.</li>
+            <li>Engineered data analytics and ML prototypes to optimise enterprise decision systems, integrating Python, SQL, and cloud-based pipelines for automated data processing and insight generation.</li>
+            <li>Conducted predictive modelling and statistical analysis on large-scale operational datasets, applying supervised learning and time-series techniques to improve business forecasting accuracy.</li>
+            <li>Collaborated with senior data scientists and domain experts to translate complex business challenges into research-driven analytical frameworks.</li>
+            <li>Managed support incidents through root cause analysis; translated technical details into user-friendly solutions for diverse stakeholders via Oracle CPQ.</li>
           </ul>
           <div class="tl-tags">
-            <span>Oracle CPQ</span><span>Data Analytics</span><span>IT Consulting</span><span>Python</span><span>SQL</span>
+            <span>Python</span><span>SQL</span><span>Oracle CPQ</span><span>Predictive Modelling</span><span>Cloud Pipelines</span>
           </div>
         </div>
       </div>
@@ -1209,22 +1374,63 @@
   <!-- ── Research & Projects ───────────────────────────────────── -->
   <section id="projects">
     <p class="section-label">Research &amp; Projects</p>
-    <h2 class="section-title reveal">Published work &amp; projects</h2>
+    <h2 class="section-title reveal">Dissertation, research &amp; projects</h2>
 
-    <div class="projects-grid">
+    <!-- Featured dissertation -->
+    <div class="dissertation-card reveal" style="--delay:0.1s">
+      <div class="dissertation-badge">&#x1F393; MSc Dissertation · University of Southampton</div>
+      <div class="dissertation-title">Localisation of Autonomous Vehicles using LiDAR Sensor</div>
+      <div class="dissertation-meta">
+        <span>Supervisors: <strong>Dr. Daniel Clark &amp; Dr. Luis-Daniel Ibáñez</strong></span>
+        <span>Dataset: <strong>KITTI-CARLA</strong></span>
+        <span>2023 – 2024</span>
+      </div>
+      <p class="dissertation-body">
+        Explored enhancing autonomous vehicle localisation in GPS-challenged environments using LiDAR sensors.
+        Compared traditional methods (K-Means clustering, Convex Hull, Minimum Enclosing Circle, ICP) and
+        developed an advanced mathematical model incorporating <strong>derivative analysis and dynamic parameter
+        adjustments</strong>. Across varied urban and rural environments, the model reduces localisation errors by
+        up to <strong>95%</strong>, particularly outperforming standard methods in challenging conditions —
+        providing a more accurate and reliable alternative to GPS-based systems.
+      </p>
+      <div class="dissertation-score">
+        <span class="dissertation-score-num">77</span>
+        <span class="dissertation-score-label">&nbsp;/ 100 &nbsp;·&nbsp; Distinction-level mark</span>
+      </div>
+    </div>
 
-      <div class="proj-card reveal" style="--delay:0.1s; --accent:124,92,191">
+    <!-- Recommendation from supervisor -->
+    <div class="recommendation-card reveal" style="--delay:0.15s">
+      <p class="rec-body">
+        "Ketan was also one of <strong>25 recipients of the Southampton Presidential International Scholarship</strong>,
+        a competitive award for academically excellent international students. His dissertation
+        'Localisation of Autonomous Vehicles using LiDAR Sensor' earned an impressive mark of
+        <strong>77/100</strong>, reflecting his deep understanding of the subject matter and his ability to
+        engage with complex technical concepts."
+      </p>
+      <div class="rec-author">
+        <div class="rec-avatar">LI</div>
+        <div>
+          <div class="rec-name">Dr. Luis-Daniel Ibáñez</div>
+          <div class="rec-role">Lecturer &amp; MSc Data Science Programme Lead, University of Southampton · Dissertation Examiner</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Publication -->
+    <div class="projects-grid" style="margin-top:1.25rem">
+
+      <div class="proj-card reveal" style="--delay:0.2s; --accent:124,92,191">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F4DD;</div>
-          <div class="proj-type-badge">Publication</div>
+          <div class="proj-type-badge">Springer Publication · FICTA 2020</div>
           <h3 class="proj-title">Blockchain-Based Grievance Management System</h3>
           <p class="proj-desc">
-            Peer-reviewed research paper proposing a transparent, tamper-proof platform for managing institutional
-            grievances using blockchain and smart contracts — eliminating manual record manipulation.
+            Proposed a decentralised solution using Hyperledger Fabric for transparent, tamper-proof grievance handling with hierarchical auto-escalation. Co-authored with R. Shettigar, N. Dalvi, F. Ansari, R. Maheshwar. Oral presentation at NIT Surathkal.
           </p>
           <div class="proj-tags">
-            <span>Blockchain</span><span>Smart Contracts</span><span>Distributed Systems</span>
+            <span>Blockchain</span><span>Hyperledger Fabric</span><span>Smart Contracts</span>
           </div>
           <div class="proj-stat">
             <a href="https://doi.org/10.1007/978-981-15-5788-0_20" target="_blank" rel="noopener" class="proj-doi">
@@ -1234,22 +1440,97 @@
         </div>
       </div>
 
-      <div class="proj-card reveal" style="--delay:0.2s; --accent:183,141,224">
+      <div class="proj-card reveal" style="--delay:0.25s; --accent:212,149,106">
         <div class="proj-glow"></div>
         <div class="proj-inner">
-          <div class="proj-icon">&#x1F3E5;</div>
-          <div class="proj-type-badge">Analytics Engineering</div>
-          <h3 class="proj-title">Health Data Pipelines at Healf</h3>
+          <div class="proj-icon">&#x2696;&#xFE0F;</div>
+          <div class="proj-type-badge proj-type-badge--patent">Patent · No. 38/2019</div>
+          <h3 class="proj-title">Grievance Redressal System</h3>
           <p class="proj-desc">
-            Building scalable data models and pipelines that integrate biomarker, lifestyle, and
-            health data into unified analytics frameworks — powering personalised wellbeing decisions.
+            Granted patent (G06Q 10/00, G06Q 50/00) for an automated blockchain-based grievance system with hierarchical escalation, immutable data structures, and tamper-proof decentralised tracking. Published 20 September 2019, India.
           </p>
           <div class="proj-tags">
-            <span>DBT</span><span>Data Engineering</span><span>HealthTech</span><span>Biomarker Analytics</span>
+            <span>Patent</span><span>Blockchain</span><span>Decentralised Systems</span>
           </div>
           <div class="proj-stat">
-            <span class="proj-stat-num">Live</span>
-            <span class="proj-stat-label">production system</span>
+            <span class="proj-stat-num">&#x2713;</span>
+            <span class="proj-stat-label">granted · Pub. No. 38/2019</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" style="--delay:0.3s; --accent:74,111,165">
+        <div class="proj-glow"></div>
+        <div class="proj-inner">
+          <div class="proj-icon">&#x1F4C8;</div>
+          <div class="proj-type-badge">University of Southampton</div>
+          <h3 class="proj-title">Hidden Markov Models for Stock Market Prediction</h3>
+          <p class="proj-desc">
+            Designed a probabilistic framework (HMM) capturing transitions between bullish, bearish, and volatile market regimes, improving predictive accuracy over traditional deterministic models for financial time-series forecasting.
+          </p>
+          <div class="proj-tags">
+            <span>HMM</span><span>Finance</span><span>Probabilistic Modelling</span><span>Python</span>
+          </div>
+          <div class="proj-stat">
+            <span class="proj-stat-num">3</span>
+            <span class="proj-stat-label">market regimes modelled</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" style="--delay:0.35s; --accent:183,141,224">
+        <div class="proj-glow"></div>
+        <div class="proj-inner">
+          <div class="proj-icon">&#x1F30D;</div>
+          <div class="proj-type-badge">University of Southampton</div>
+          <h3 class="proj-title">Global Economic Trend Analysis (1960–2022)</h3>
+          <p class="proj-desc">
+            In-depth analysis of global GDP trends over six decades, assessing economic impacts of geopolitical events, technological advancements, and financial crises. Uncovered rise of emerging markets and shifts in global economic power through advanced data visualisation.
+          </p>
+          <div class="proj-tags">
+            <span>Data Visualisation</span><span>Economics</span><span>Python</span><span>Forecasting</span>
+          </div>
+          <div class="proj-stat">
+            <span class="proj-stat-num">62</span>
+            <span class="proj-stat-label">years of data analysed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" style="--delay:0.4s; --accent:183,90,120">
+        <div class="proj-glow"></div>
+        <div class="proj-inner">
+          <div class="proj-icon">&#x1F6F8;</div>
+          <div class="proj-type-badge">Savitribai Phule Pune University</div>
+          <h3 class="proj-title">UAV Quadcopter with ML for Autonomous Operations</h3>
+          <p class="proj-desc">
+            Led development of a UAV quadcopter for live-video surveillance, search &amp; rescue, and autonomous delivery. Integrated real-time ML object detection and autonomous tracking; engineered flight control systems using Raspberry Pi 3.
+          </p>
+          <div class="proj-tags">
+            <span>Computer Vision</span><span>ML</span><span>Raspberry Pi</span><span>Autonomous Systems</span>
+          </div>
+          <div class="proj-stat">
+            <span class="proj-stat-num">+20<em>%</em></span>
+            <span class="proj-stat-label">detection accuracy gain</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal" style="--delay:0.45s; --accent:80,160,120">
+        <div class="proj-glow"></div>
+        <div class="proj-inner">
+          <div class="proj-icon">&#x1F525;</div>
+          <div class="proj-type-badge">University of Southampton</div>
+          <h3 class="proj-title">Forest Fire Simulation</h3>
+          <p class="proj-desc">
+            Interactive Python simulation modelling fire spread under varied conditions — forest density, wind, tree types, water bodies. Implemented fire sensors and percolation study modes to analyse critical density thresholds and non-linear fire behaviour.
+          </p>
+          <div class="proj-tags">
+            <span>Simulation Modelling</span><span>Python</span><span>Complexity Science</span>
+          </div>
+          <div class="proj-stat">
+            <span class="proj-stat-num">&#x223C;</span>
+            <span class="proj-stat-label">percolation threshold modelled</span>
           </div>
         </div>
       </div>
@@ -1267,27 +1548,32 @@
       <div class="skill-group reveal" style="--delay:0.05s">
         <h3 class="skill-group-title">
           <span class="skill-group-dot" style="background:var(--mauve)"></span>
-          Languages
+          Programming
         </h3>
         <div class="skill-pills">
           <span class="pill pill--lit">Python</span>
-          <span class="pill pill--lit">SQL</span>
+          <span class="pill pill--lit">SQL / PostgreSQL</span>
           <span class="pill">R</span>
+          <span class="pill">Solidity</span>
           <span class="pill">JavaScript</span>
+          <span class="pill">Flask</span>
+          <span class="pill">React</span>
+          <span class="pill">Bash / Shell</span>
         </div>
       </div>
 
       <div class="skill-group reveal" style="--delay:0.1s">
         <h3 class="skill-group-title">
           <span class="skill-group-dot" style="background:var(--dusk-blue)"></span>
-          Data Engineering
+          Data Science &amp; Engineering
         </h3>
         <div class="skill-pills">
           <span class="pill pill--lit">DBT</span>
-          <span class="pill pill--lit">Data Engineering</span>
-          <span class="pill pill--lit">Data Maintenance</span>
+          <span class="pill pill--lit">Apache Spark</span>
+          <span class="pill pill--lit">Databricks</span>
+          <span class="pill">Jupyter / Colab</span>
+          <span class="pill">NumPy</span>
           <span class="pill">ETL Pipelines</span>
-          <span class="pill">PostgreSQL</span>
         </div>
       </div>
 
@@ -1297,52 +1583,87 @@
           Machine Learning &amp; AI
         </h3>
         <div class="skill-pills">
-          <span class="pill pill--lit">Deep Learning</span>
-          <span class="pill pill--lit">ML for Health</span>
-          <span class="pill">Scikit-learn</span>
-          <span class="pill">TensorFlow</span>
-          <span class="pill">NLP</span>
+          <span class="pill pill--lit">PyTorch</span>
+          <span class="pill pill--lit">TensorFlow / Keras</span>
+          <span class="pill">Geometric Learning</span>
+          <span class="pill">SHAP / LIME</span>
+          <span class="pill">MLFlow</span>
+          <span class="pill">Weights &amp; Biases</span>
         </div>
       </div>
 
       <div class="skill-group reveal" style="--delay:0.2s">
         <h3 class="skill-group-title">
           <span class="skill-group-dot" style="background:var(--amber)"></span>
-          HealthTech &amp; Biomarkers
+          Computer Vision &amp; NLP
         </h3>
         <div class="skill-pills">
-          <span class="pill pill--lit">Biomarker Analytics</span>
-          <span class="pill pill--lit">Health Data</span>
-          <span class="pill">Wellness Analytics</span>
-          <span class="pill">Behavioural Insights</span>
+          <span class="pill">OpenCV</span>
+          <span class="pill">YOLO</span>
+          <span class="pill">Mediapipe</span>
+          <span class="pill">Hugging Face</span>
+          <span class="pill">NLTK</span>
+          <span class="pill">RAG</span>
         </div>
       </div>
 
       <div class="skill-group reveal" style="--delay:0.25s">
         <h3 class="skill-group-title">
           <span class="skill-group-dot" style="background:var(--purple)"></span>
-          Visualisation &amp; BI
+          Cloud &amp; DevOps
         </h3>
         <div class="skill-pills">
-          <span class="pill">Matplotlib</span>
-          <span class="pill">Seaborn</span>
-          <span class="pill">Plotly</span>
-          <span class="pill">Power BI</span>
-          <span class="pill">Tableau</span>
+          <span class="pill pill--lit">Microsoft Azure</span>
+          <span class="pill pill--lit">AWS</span>
+          <span class="pill">Google Cloud</span>
+          <span class="pill">Docker</span>
+          <span class="pill">Kubernetes</span>
+          <span class="pill">Git / GitHub</span>
+          <span class="pill">RESTful APIs</span>
         </div>
       </div>
 
       <div class="skill-group reveal" style="--delay:0.3s">
         <h3 class="skill-group-title">
           <span class="skill-group-dot" style="background:var(--blush)"></span>
-          Other
+          Visualisation &amp; BI
         </h3>
         <div class="skill-pills">
-          <span class="pill">Blockchain</span>
-          <span class="pill">Web3</span>
-          <span class="pill">Docker</span>
-          <span class="pill">Git</span>
+          <span class="pill pill--lit">Tableau</span>
+          <span class="pill pill--lit">Power BI</span>
+          <span class="pill">ThoughtSpot</span>
+          <span class="pill">Matplotlib</span>
+          <span class="pill">Seaborn</span>
+          <span class="pill">Plotly</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal" style="--delay:0.35s">
+        <h3 class="skill-group-title">
+          <span class="skill-group-dot" style="background:var(--dusk-blue)"></span>
+          Mathematical Foundations
+        </h3>
+        <div class="skill-pills">
+          <span class="pill">Statistics &amp; Probability</span>
+          <span class="pill">Chaos Theory</span>
+          <span class="pill">Markov Chains</span>
+          <span class="pill">Time-Series</span>
+          <span class="pill">Calculus</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal" style="--delay:0.4s">
+        <h3 class="skill-group-title">
+          <span class="skill-group-dot" style="background:var(--amber)"></span>
+          Research &amp; Project Management
+        </h3>
+        <div class="skill-pills">
+          <span class="pill">MLOps</span>
           <span class="pill">Agile / Scrum</span>
+          <span class="pill">Blockchain / Web3</span>
+          <span class="pill">MATLAB</span>
+          <span class="pill">LINUX / UNIX</span>
+          <span class="pill">Documentation</span>
         </div>
       </div>
 
@@ -1380,7 +1701,7 @@
   </section>
 
   <!-- ── Education ────────────────────────────────────────────── -->
-  <section id="education">
+  <section id="education" style="padding-bottom:2rem">
     <p class="section-label">Education</p>
     <h2 class="section-title reveal">Academic background</h2>
 
@@ -1390,7 +1711,7 @@
         <div class="edu-info">
           <span class="edu-degree">MSc Data Science</span>
           <span class="edu-school">University of Southampton</span>
-          <span class="edu-note">Oct 2023 – Sep 2024</span>
+          <span class="edu-note">&#x2605; Southampton Presidential International Scholarship &nbsp;·&nbsp; Oct 2023 – Sep 2024</span>
         </div>
         <span class="edu-year">2024</span>
       </div>
@@ -1413,6 +1734,20 @@
         <span class="edu-year">2020</span>
       </div>
     </div>
+
+    <!-- Achievements -->
+    <div class="achievements-list reveal" style="--delay:0.4s">
+      <div class="ach-pill"><span class="ach-dot"></span>IELTS 7.5 — Advanced English Proficiency</div>
+      <div class="ach-pill"><span class="ach-dot" style="background:var(--amber)"></span>Runner-up — Smart India Hackathon 2019</div>
+      <div class="ach-pill"><span class="ach-dot" style="background:var(--rose)"></span>Event Chair — Computer Engineering Student Association (CESA)</div>
+      <div class="ach-pill"><span class="ach-dot" style="background:var(--dusk-blue)"></span>Oral Presentation — FICTA 2020, NIT Surathkal</div>
+      <div class="ach-pill"><span class="ach-dot" style="background:var(--purple)"></span>London Blockchain Conference 2024</div>
+      <div class="ach-pill"><span class="ach-dot" style="background:var(--mauve)"></span>Big Data LDN 2024 &amp; 2025</div>
+      <div class="ach-pill"><span class="ach-dot" style="background:var(--amber)"></span>Healf Experience 2025 (HX25)</div>
+      <div class="ach-pill"><span class="ach-dot" style="background:var(--rose)"></span>State-level Table Tennis Player — Maharashtra, India</div>
+      <div class="ach-pill"><span class="ach-dot" style="background:var(--dusk-blue)"></span>Algorithmic Trading Strategies — NIFTY &amp; BANKNIFTY</div>
+      <div class="ach-pill"><span class="ach-dot"></span>Robotics Club Mentor — Multidisciplinary team lead</div>
+    </div>
   </section>
 
   <!-- ── Contact ───────────────────────────────────────────────── -->
@@ -1421,11 +1756,11 @@
       <p class="section-label">Contact</p>
       <h2 class="section-title">Let's build something<br/><em class="grad-text">worth remembering.</em></h2>
       <p class="contact-sub">
-        Open to data science roles, research collaborations, and interesting problems.
+        Open to AI/ML research roles, analytics engineering, and HealthTech collaborations.
         Drop me a line — I respond to everything.
       </p>
       <div class="contact-links">
-        <a href="https://www.linkedin.com/in/ketann-ingaale" target="_blank" rel="noopener" class="contact-btn">
+        <a href="https://www.linkedin.com/in/ketanningaale" target="_blank" rel="noopener" class="contact-btn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           Connect on LinkedIn
         </a>
