@@ -638,6 +638,24 @@
       color: var(--text-muted);
     }
 
+    .proj-type-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mauve);
+      border: 1px solid rgba(183,141,224,0.3);
+      border-radius: 100px;
+      padding: 0.2rem 0.65rem;
+      width: fit-content;
+    }
+
+    .proj-type-badge--patent {
+      color: var(--amber);
+      border-color: rgba(212,149,106,0.3);
+    }
+
     /* ── Skills ─────────────────────────────────────────────────── */
     .skills-layout {
       margin-top: 3.5rem;
@@ -949,7 +967,7 @@
     <canvas id="aurora"></canvas>
 
     <div class="hero-content">
-      <span class="hero-tag">Data Scientist &amp; ML Engineer</span>
+      <span class="hero-tag">Analytics Engineer · HealthTech · Data &amp; AI</span>
 
       <h1 class="hero-name">
         <span class="line-1">Ketann</span>
@@ -957,8 +975,8 @@
       </h1>
 
       <p class="hero-sub">
-        Turning raw data into <strong>decisions that matter</strong>.<br/>
-        MSc Data Science · Ex-Infosys · LiDAR · NLP · Cloud
+        Building data systems that <strong>bridge science, technology &amp; human wellbeing</strong>.<br/>
+        Analytics Engineer at Healf · MSc Data Science, University of Southampton
       </p>
 
       <div class="hero-cta">
@@ -980,27 +998,29 @@
       <!-- Left: text -->
       <div class="about-text reveal">
         <p class="section-label">About me</p>
-        <h2 class="section-title">Data that drives<br/><em>real outcomes</em></h2>
+        <h2 class="section-title">Data that powers<br/><em>human wellbeing</em></h2>
         <p class="about-body">
-          I'm a data scientist who moves between the technical and the tangible —
-          calibrating LiDAR sensors for self-driving vehicles one day, building
-          cloud ETL pipelines the next. I completed my
-          <strong>MSc Data Science at the University of Southampton</strong> on a
-          Presidential International Scholarship, and bring hands-on experience
-          across machine learning, NLP, and large-scale analytics.
+          I'm a Data Science professional passionate about transforming complex data
+          into meaningful insights that empower health and wellbeing. As an
+          <strong>Analytics Engineer at Healf</strong>, I help build scalable data systems
+          that bridge science, technology, and human understanding — driving smarter
+          decisions and enabling more personalised health experiences.
         </p>
         <p class="about-body">
-          Outside the terminal I work on the frontline at Boots UK, which keeps
-          me grounded in how data decisions land in the real world.
+          My background includes an <strong>MSc in Data Science from the University of
+          Southampton</strong>, where I specialised in large-scale trend analysis and
+          data-driven research. I enjoy connecting the dots between analytics, AI,
+          and human behaviour — from biomarker data and health insights to global
+          economic trends.
         </p>
         <div class="about-links">
-          <a href="https://www.linkedin.com/in/ketann-ingaale" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+          <a href="https://www.linkedin.com/in/ketanningaale" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             LinkedIn
           </a>
-          <a href="https://www.kaggle.com" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.946l6.204-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.332z"/></svg>
-            Kaggle
+          <a href="mailto:ketanningaale@gmail.com" class="btn btn-ghost btn-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email
           </a>
         </div>
       </div>
@@ -1008,20 +1028,20 @@
       <!-- Right: stat cards -->
       <div class="about-stats">
         <div class="stat-card reveal" style="--delay:0.1s">
-          <span class="stat-num">95<em>%</em></span>
-          <span class="stat-desc">reduction in LiDAR localisation error for autonomous vehicles</span>
+          <span class="stat-num">MSc</span>
+          <span class="stat-desc">Data Science — University of Southampton</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.2s">
-          <span class="stat-num">Top<em>&nbsp;25%</em></span>
-          <span class="stat-desc">ranking on Kaggle competitive ML</span>
+          <span class="stat-num">2<em>×</em></span>
+          <span class="stat-desc">published research papers on blockchain-based grievance systems</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.3s">
-          <span class="stat-num">40<em>%</em></span>
-          <span class="stat-desc">improvement in grievance transparency via blockchain system</span>
+          <span class="stat-num">1</span>
+          <span class="stat-desc">granted patent — Grievance Redressal System</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.4s">
-          <span class="stat-num">MSc</span>
-          <span class="stat-desc">Data Science — University of Southampton, Presidential Scholar</span>
+          <span class="stat-num">3</span>
+          <span class="stat-desc">degrees across Engineering, Business, and Data Science</span>
         </div>
       </div>
 
@@ -1036,24 +1056,46 @@
     <div class="timeline">
 
       <div class="tl-item reveal" style="--delay:0.1s">
+        <div class="tl-dot tl-dot--amber"></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <span class="tl-role">Analytics Engineer</span>
+              <span class="tl-company">Healf · London, UK</span>
+            </div>
+            <span class="tl-date">Sep 2025 – Present</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Designing and maintaining scalable, efficient data pipelines and models to support Healf's holistic wellbeing mission.</li>
+            <li>Developing analytics systems that drive smarter decisions across products, marketing, and research.</li>
+            <li>Integrating health, biomarker, and lifestyle data into unified frameworks to enhance personalisation and scientific understanding.</li>
+            <li>Collaborating cross-functionally to ensure data quality, accessibility, and transparency across the organisation.</li>
+          </ul>
+          <div class="tl-tags">
+            <span>DBT</span><span>Data Engineering</span><span>HealthTech</span><span>Analytics</span><span>Biomarker Data</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal" style="--delay:0.15s">
         <div class="tl-dot"></div>
         <div class="tl-line"></div>
         <div class="tl-card">
           <div class="tl-header">
             <div>
-              <span class="tl-role">Associate Consultant</span>
-              <span class="tl-company">Infosys</span>
+              <span class="tl-role">Exam Invigilator</span>
+              <span class="tl-company">University of Southampton</span>
             </div>
-            <span class="tl-date">2021 – 2023</span>
+            <span class="tl-date">Dec 2024 – Jan 2026</span>
           </div>
           <ul class="tl-bullets">
-            <li>Designed and maintained cloud ETL pipelines on AWS &amp; Azure, reducing data processing latency by 35%.</li>
-            <li>Built predictive models (churn, demand forecasting) deployed to production serving 50 k+ daily users.</li>
-            <li>Created analytics dashboards in Python &amp; SQL that surfaced insights for senior stakeholders.</li>
-            <li>Mentored junior analysts on ML workflows and data engineering best practices.</li>
+            <li>Maintained integrity and smooth operation of university assessments for a diverse student body.</li>
+            <li>Set up exam venues, communicated procedures clearly, and supported students with calm, respectful guidance.</li>
+            <li>Balanced academic regulations with student welfare, working closely with team leaders to create a supportive atmosphere.</li>
           </ul>
           <div class="tl-tags">
-            <span>Python</span><span>SQL</span><span>AWS</span><span>Azure</span><span>ETL</span><span>ML</span>
+            <span>Academic Integrity</span><span>Student Support</span><span>Communication</span>
           </div>
         </div>
       </div>
@@ -1064,40 +1106,86 @@
         <div class="tl-card">
           <div class="tl-header">
             <div>
-              <span class="tl-role">LiDAR Calibration Engineer</span>
-              <span class="tl-company">Autonomous Vehicles Project</span>
+              <span class="tl-role">Health &amp; Wellness Specialist</span>
+              <span class="tl-company">The Boots Group · Southampton</span>
             </div>
-            <span class="tl-date">2023</span>
+            <span class="tl-date">Feb 2025 – Nov 2025</span>
           </div>
           <ul class="tl-bullets">
-            <li>Calibrated LiDAR sensors for self-driving vehicle platforms in GPS-limited environments.</li>
-            <li>Reduced localisation error by <strong>95%</strong> through novel sensor-fusion algorithms.</li>
-            <li>Implemented simulation models to validate calibration accuracy across edge-case scenarios.</li>
+            <li>Completed an accredited GPhC programme, achieving Pharmacy NOS at RQF Level 2 / SCQF Level 5.</li>
+            <li>Provided expert, evidence-based advice on non-prescribed medicines and healthcare products.</li>
+            <li>Connected customers with Boots' omnichannel services (Pharmacy Services, Online Doctor), improving healthcare accessibility.</li>
+            <li>Used a data-driven approach to track customer interactions and feedback to optimise stock levels and service delivery.</li>
           </ul>
           <div class="tl-tags">
-            <span>LiDAR</span><span>Sensor Fusion</span><span>Simulation</span><span>Python</span><span>ROS</span>
+            <span>Healthcare</span><span>Customer Insights</span><span>GPhC Certified</span><span>Data-Driven</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal" style="--delay:0.25s">
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <span class="tl-role">Associate Consultant</span>
+              <span class="tl-company">Infosys · India</span>
+            </div>
+            <span class="tl-date">Jun 2022 – Aug 2023</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Analysed client workflows to identify inefficiencies, designing tailored solutions using data analytics and Oracle CPQ.</li>
+            <li>Collaborated with cross-functional teams to address technical issues with a data-driven approach.</li>
+            <li>Managed support incidents through root cause analysis and troubleshooting, ensuring smooth operations and high customer satisfaction.</li>
+            <li>Translated technical details into user-friendly solutions for diverse non-technical stakeholders.</li>
+          </ul>
+          <div class="tl-tags">
+            <span>Oracle CPQ</span><span>Data Analytics</span><span>IT Consulting</span><span>Python</span><span>SQL</span>
           </div>
         </div>
       </div>
 
       <div class="tl-item reveal" style="--delay:0.3s">
-        <div class="tl-dot tl-dot--amber"></div>
+        <div class="tl-dot"></div>
         <div class="tl-line"></div>
         <div class="tl-card">
           <div class="tl-header">
             <div>
-              <span class="tl-role">Healthcare Specialist</span>
-              <span class="tl-company">Boots UK</span>
+              <span class="tl-role">Content Creator</span>
+              <span class="tl-company">StoryMirror · Mumbai, India</span>
             </div>
-            <span class="tl-date">2023 – Present</span>
+            <span class="tl-date">Sep 2021 – Nov 2021</span>
           </div>
           <ul class="tl-bullets">
-            <li>Spot health-product trends in real time to improve service quality and stock strategy.</li>
-            <li>Translate customer insights into data-backed recommendations for team leads.</li>
-            <li>Bridge the gap between frontline operations and data-driven decision-making.</li>
+            <li>Crafted engaging digital content — motion graphics, videos, and social media creatives — for one of India's largest storytelling platforms.</li>
+            <li>Used Canva, Adobe Premiere Pro, After Effects, and Illustrator to produce multimedia content.</li>
+            <li>Contributed to content strategy, social media marketing, and campaign execution.</li>
           </ul>
           <div class="tl-tags">
-            <span>Customer Insights</span><span>Analytics</span><span>Healthcare</span>
+            <span>Adobe Suite</span><span>Canva</span><span>Content Strategy</span><span>Social Media</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal" style="--delay:0.35s">
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <span class="tl-role">Product Development Assistant</span>
+              <span class="tl-company">Leap Info Systems · Pune, India</span>
+            </div>
+            <span class="tl-date">Jun 2020 – Dec 2020</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Gathered and analysed requirements by engaging with clients to understand technical challenges and expectations.</li>
+            <li>Contributed insights on system architecture, ensuring solutions were scalable and efficient.</li>
+            <li>Produced detailed technical documentation simplifying complex data-driven insights for non-technical stakeholders.</li>
+          </ul>
+          <div class="tl-tags">
+            <span>Requirements Analysis</span><span>Technical Docs</span><span>Agile</span><span>Client Communication</span>
           </div>
         </div>
       </div>
@@ -1105,28 +1193,29 @@
     </div>
   </section>
 
-  <!-- ── Projects ─────────────────────────────────────────────── -->
+  <!-- ── Research & Projects ───────────────────────────────────── -->
   <section id="projects">
-    <p class="section-label">Projects</p>
-    <h2 class="section-title reveal">Things I've built</h2>
+    <p class="section-label">Research &amp; Projects</p>
+    <h2 class="section-title reveal">Publications, patents &amp; work</h2>
 
     <div class="projects-grid">
 
       <div class="proj-card reveal" style="--delay:0.1s; --accent:124,92,191">
         <div class="proj-glow"></div>
         <div class="proj-inner">
-          <div class="proj-icon">&#x26D3;&#xFE0F;</div>
-          <h3 class="proj-title">Blockchain Grievance System</h3>
+          <div class="proj-icon">&#x1F4DD;</div>
+          <div class="proj-type-badge">Publication</div>
+          <h3 class="proj-title">Blockchain-Based Grievance Management System</h3>
           <p class="proj-desc">
-            A transparent, tamper-proof grievance handling platform backed by smart contracts.
-            Improved transparency by <strong>40%</strong> and eliminated manual record manipulation.
+            Research paper proposing a transparent, tamper-proof platform for managing institutional
+            grievances using blockchain and smart contracts — eliminating manual record manipulation.
           </p>
           <div class="proj-tags">
-            <span>Blockchain</span><span>Smart Contracts</span><span>Python</span><span>Web3</span>
+            <span>Blockchain</span><span>Smart Contracts</span><span>Distributed Systems</span>
           </div>
           <div class="proj-stat">
-            <span class="proj-stat-num">40%</span>
-            <span class="proj-stat-label">transparency gain</span>
+            <span class="proj-stat-num">Pub.</span>
+            <span class="proj-stat-label">peer-reviewed research</span>
           </div>
         </div>
       </div>
@@ -1134,56 +1223,59 @@
       <div class="proj-card reveal" style="--delay:0.2s; --accent:74,111,165">
         <div class="proj-glow"></div>
         <div class="proj-inner">
-          <div class="proj-icon">&#x1F697;</div>
-          <h3 class="proj-title">Autonomous Vehicle LiDAR Calibration</h3>
+          <div class="proj-icon">&#x1F4DA;</div>
+          <div class="proj-type-badge">Publication</div>
+          <h3 class="proj-title">Blockchain-based Institute Grievance Redressal System</h3>
           <p class="proj-desc">
-            Sensor-fusion pipeline for GPS-denied environments. Novel calibration algorithm
-            slashed localisation error by <strong>95%</strong>, enabling reliable indoor &amp; tunnel navigation.
+            Second publication extending the grievance redressal framework for academic institutions,
+            with a focus on scalability, transparency, and student welfare.
           </p>
           <div class="proj-tags">
-            <span>LiDAR</span><span>Sensor Fusion</span><span>ROS</span><span>Python</span><span>C++</span>
+            <span>Blockchain</span><span>Web3</span><span>Academic Systems</span>
           </div>
           <div class="proj-stat">
-            <span class="proj-stat-num">95%</span>
-            <span class="proj-stat-label">error reduction</span>
+            <span class="proj-stat-num">Pub.</span>
+            <span class="proj-stat-label">peer-reviewed research</span>
           </div>
         </div>
       </div>
 
-      <div class="proj-card reveal" style="--delay:0.3s; --accent:183,141,224">
+      <div class="proj-card reveal" style="--delay:0.3s; --accent:212,149,106">
         <div class="proj-glow"></div>
         <div class="proj-inner">
-          <div class="proj-icon">&#x1F30D;</div>
-          <h3 class="proj-title">Global GDP Shift Analysis</h3>
+          <div class="proj-icon">&#x2696;&#xFE0F;</div>
+          <div class="proj-type-badge proj-type-badge--patent">Patent</div>
+          <h3 class="proj-title">Grievance Redressal System</h3>
           <p class="proj-desc">
-            Deep-learning and simulation modelling project analysing multi-decade GDP
-            trends across 180 countries, with rich interactive visualisations and forecasting.
+            Granted patent for an innovative grievance redressal system, formalising the
+            blockchain-based approach into intellectual property recognised at a national level.
           </p>
           <div class="proj-tags">
-            <span>Deep Learning</span><span>Simulation</span><span>Data Viz</span><span>Python</span>
+            <span>Patent</span><span>Blockchain</span><span>Innovation</span>
           </div>
           <div class="proj-stat">
-            <span class="proj-stat-num">180</span>
-            <span class="proj-stat-label">countries analysed</span>
+            <span class="proj-stat-num">&#x2713;</span>
+            <span class="proj-stat-label">granted patent</span>
           </div>
         </div>
       </div>
 
-      <div class="proj-card reveal" style="--delay:0.4s; --accent:212,149,106">
+      <div class="proj-card reveal" style="--delay:0.4s; --accent:183,141,224">
         <div class="proj-glow"></div>
         <div class="proj-inner">
-          <div class="proj-icon">&#x2601;&#xFE0F;</div>
-          <h3 class="proj-title">Cloud ETL &amp; Predictive Pipelines</h3>
+          <div class="proj-icon">&#x1F3E5;</div>
+          <div class="proj-type-badge">Analytics Engineering</div>
+          <h3 class="proj-title">Health Data Pipelines at Healf</h3>
           <p class="proj-desc">
-            End-to-end data pipelines on AWS &amp; Azure for churn prediction and demand forecasting,
-            serving 50k+ daily users with 35% lower latency than legacy systems.
+            Building scalable data models and pipelines that integrate biomarker, lifestyle, and
+            health data into unified analytics frameworks — powering personalised wellbeing decisions.
           </p>
           <div class="proj-tags">
-            <span>AWS</span><span>Azure</span><span>ETL</span><span>SQL</span><span>ML</span>
+            <span>DBT</span><span>Data Engineering</span><span>HealthTech</span><span>Biomarker Analytics</span>
           </div>
           <div class="proj-stat">
-            <span class="proj-stat-num">50k+</span>
-            <span class="proj-stat-label">daily users</span>
+            <span class="proj-stat-num">Live</span>
+            <span class="proj-stat-label">production system</span>
           </div>
         </div>
       </div>
@@ -1205,8 +1297,7 @@
         </h3>
         <div class="skill-pills">
           <span class="pill pill--lit">Python</span>
-          <span class="pill">SQL</span>
-          <span class="pill">C++</span>
+          <span class="pill pill--lit">SQL</span>
           <span class="pill">R</span>
           <span class="pill">JavaScript</span>
         </div>
@@ -1215,14 +1306,13 @@
       <div class="skill-group reveal" style="--delay:0.1s">
         <h3 class="skill-group-title">
           <span class="skill-group-dot" style="background:var(--dusk-blue)"></span>
-          Cloud &amp; Data
+          Data Engineering
         </h3>
         <div class="skill-pills">
-          <span class="pill pill--lit">AWS</span>
-          <span class="pill pill--lit">Azure</span>
+          <span class="pill pill--lit">DBT</span>
+          <span class="pill pill--lit">Data Engineering</span>
+          <span class="pill pill--lit">Data Maintenance</span>
           <span class="pill">ETL Pipelines</span>
-          <span class="pill">Spark</span>
-          <span class="pill">Airflow</span>
           <span class="pill">PostgreSQL</span>
         </div>
       </div>
@@ -1230,29 +1320,27 @@
       <div class="skill-group reveal" style="--delay:0.15s">
         <h3 class="skill-group-title">
           <span class="skill-group-dot" style="background:var(--rose)"></span>
-          Machine Learning
+          Machine Learning &amp; AI
         </h3>
         <div class="skill-pills">
           <span class="pill pill--lit">Deep Learning</span>
-          <span class="pill pill--lit">NLP</span>
+          <span class="pill pill--lit">ML for Health</span>
           <span class="pill">Scikit-learn</span>
           <span class="pill">TensorFlow</span>
-          <span class="pill">PyTorch</span>
-          <span class="pill">XGBoost</span>
+          <span class="pill">NLP</span>
         </div>
       </div>
 
       <div class="skill-group reveal" style="--delay:0.2s">
         <h3 class="skill-group-title">
           <span class="skill-group-dot" style="background:var(--amber)"></span>
-          Robotics &amp; Sensing
+          HealthTech &amp; Biomarkers
         </h3>
         <div class="skill-pills">
-          <span class="pill pill--lit">LiDAR</span>
-          <span class="pill pill--lit">Sensor Fusion</span>
-          <span class="pill">ROS</span>
-          <span class="pill">Simulation</span>
-          <span class="pill">SLAM</span>
+          <span class="pill pill--lit">Biomarker Analytics</span>
+          <span class="pill pill--lit">Health Data</span>
+          <span class="pill">Wellness Analytics</span>
+          <span class="pill">Behavioural Insights</span>
         </div>
       </div>
 
@@ -1290,26 +1378,26 @@
     <div class="prof-bars reveal" style="--delay:0.35s">
       <div class="prof-row">
         <span class="prof-name">Python</span>
-        <div class="prof-track"><div class="prof-fill" style="--pct:95%; --col:var(--mauve)"></div></div>
+        <div class="prof-track"><div class="prof-fill" style="--pct:92%; --col:var(--mauve)"></div></div>
         <span class="prof-pct">Expert</span>
       </div>
       <div class="prof-row">
-        <span class="prof-name">Machine Learning</span>
-        <div class="prof-track"><div class="prof-fill" style="--pct:88%; --col:var(--rose)"></div></div>
+        <span class="prof-name">DBT &amp; Data Engineering</span>
+        <div class="prof-track"><div class="prof-fill" style="--pct:88%; --col:var(--dusk-blue)"></div></div>
         <span class="prof-pct">Advanced</span>
       </div>
       <div class="prof-row">
-        <span class="prof-name">Cloud (AWS / Azure)</span>
-        <div class="prof-track"><div class="prof-fill" style="--pct:82%; --col:var(--dusk-blue)"></div></div>
-        <span class="prof-pct">Advanced</span>
-      </div>
-      <div class="prof-row">
-        <span class="prof-name">SQL &amp; Data Engineering</span>
+        <span class="prof-name">SQL</span>
         <div class="prof-track"><div class="prof-fill" style="--pct:85%; --col:var(--purple)"></div></div>
         <span class="prof-pct">Advanced</span>
       </div>
       <div class="prof-row">
-        <span class="prof-name">LiDAR / Robotics</span>
+        <span class="prof-name">Machine Learning &amp; AI</span>
+        <div class="prof-track"><div class="prof-fill" style="--pct:82%; --col:var(--rose)"></div></div>
+        <span class="prof-pct">Advanced</span>
+      </div>
+      <div class="prof-row">
+        <span class="prof-name">Health &amp; Biomarker Analytics</span>
         <div class="prof-track"><div class="prof-fill" style="--pct:78%; --col:var(--amber)"></div></div>
         <span class="prof-pct">Proficient</span>
       </div>
@@ -1328,9 +1416,27 @@
         <div class="edu-info">
           <span class="edu-degree">MSc Data Science</span>
           <span class="edu-school">University of Southampton</span>
-          <span class="edu-note">Presidential International Scholarship</span>
+          <span class="edu-note">Oct 2023 – Sep 2024</span>
         </div>
-        <span class="edu-year">2023</span>
+        <span class="edu-year">2024</span>
+      </div>
+      <div class="edu-card reveal" style="--delay:0.2s">
+        <div class="edu-badge">MBA</div>
+        <div class="edu-info">
+          <span class="edu-degree">MBA — Finance</span>
+          <span class="edu-school">Dept. of Management Sciences (PUMBA), Savitribai Phule Pune University</span>
+          <span class="edu-note">Aug 2020 – Oct 2022</span>
+        </div>
+        <span class="edu-year">2022</span>
+      </div>
+      <div class="edu-card reveal" style="--delay:0.3s">
+        <div class="edu-badge">BE</div>
+        <div class="edu-info">
+          <span class="edu-degree">BE — Computer Engineering</span>
+          <span class="edu-school">Savitribai Phule Pune University</span>
+          <span class="edu-note">Aug 2016 – Jun 2020</span>
+        </div>
+        <span class="edu-year">2020</span>
       </div>
     </div>
   </section>
@@ -1349,7 +1455,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           Connect on LinkedIn
         </a>
-        <a href="mailto:ketann.ingaale@gmail.com" class="contact-btn contact-btn--ghost">
+        <a href="mailto:ketanningaale@gmail.com" class="contact-btn contact-btn--ghost">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           Send an email
         </a>
