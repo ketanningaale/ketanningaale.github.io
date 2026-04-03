@@ -391,6 +391,141 @@
       transform: translateY(0);
     }
 
+    /* ── Experience timeline ────────────────────────────────────── */
+    .timeline {
+      margin-top: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 20px 2px 1fr;
+      gap: 0 1.5rem;
+      position: relative;
+    }
+
+    .tl-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--mauve));
+      box-shadow: 0 0 12px rgba(124,92,191,0.7);
+      margin-top: 0.35rem;
+      flex-shrink: 0;
+      align-self: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-dot--amber {
+      background: linear-gradient(135deg, var(--amber), var(--rose));
+      box-shadow: 0 0 12px rgba(212,149,106,0.6);
+    }
+
+    .tl-line {
+      width: 2px;
+      background: linear-gradient(to bottom, var(--purple-dim), transparent);
+      margin-left: 3px;
+      min-height: 100%;
+    }
+
+    .tl-item:last-child .tl-line { background: transparent; }
+
+    .tl-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 2rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .tl-card:hover {
+      border-color: rgba(183,141,224,0.25);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+
+    .tl-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tl-role {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .tl-company {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--mauve);
+      margin-top: 0.2rem;
+      font-weight: 500;
+    }
+
+    .tl-date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      padding-top: 0.2rem;
+    }
+
+    .tl-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .tl-bullets li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .tl-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--purple);
+    }
+
+    .tl-bullets strong { color: var(--blush); font-weight: 600; }
+
+    .tl-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+    }
+
+    .tl-tags span {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.25rem 0.75rem;
+    }
+
     /* ── Responsive ─────────────────────────────────────────────── */
     @media (max-width: 768px) {
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -401,6 +536,8 @@
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       section { padding: 5rem 1.5rem; }
+      .tl-item { grid-template-columns: 14px 2px 1fr; gap: 0 1rem; }
+      .tl-card { padding: 1.25rem 1.25rem; }
     }
   </style>
 </head>
@@ -502,7 +639,84 @@
     </div>
   </section>
 
-  <div id="experience"></div>
+  <!-- ── Experience ───────────────────────────────────────────── -->
+  <section id="experience">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title reveal">Where I've worked</h2>
+
+    <div class="timeline">
+
+      <div class="tl-item reveal" style="--delay:0.1s">
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <span class="tl-role">Associate Consultant</span>
+              <span class="tl-company">Infosys</span>
+            </div>
+            <span class="tl-date">2021 – 2023</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Designed and maintained cloud ETL pipelines on AWS &amp; Azure, reducing data processing latency by 35%.</li>
+            <li>Built predictive models (churn, demand forecasting) deployed to production serving 50 k+ daily users.</li>
+            <li>Created analytics dashboards in Python &amp; SQL that surfaced insights for senior stakeholders.</li>
+            <li>Mentored junior analysts on ML workflows and data engineering best practices.</li>
+          </ul>
+          <div class="tl-tags">
+            <span>Python</span><span>SQL</span><span>AWS</span><span>Azure</span><span>ETL</span><span>ML</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal" style="--delay:0.2s">
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <span class="tl-role">LiDAR Calibration Engineer</span>
+              <span class="tl-company">Autonomous Vehicles Project</span>
+            </div>
+            <span class="tl-date">2023</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Calibrated LiDAR sensors for self-driving vehicle platforms in GPS-limited environments.</li>
+            <li>Reduced localisation error by <strong>95%</strong> through novel sensor-fusion algorithms.</li>
+            <li>Implemented simulation models to validate calibration accuracy across edge-case scenarios.</li>
+          </ul>
+          <div class="tl-tags">
+            <span>LiDAR</span><span>Sensor Fusion</span><span>Simulation</span><span>Python</span><span>ROS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item reveal" style="--delay:0.3s">
+        <div class="tl-dot tl-dot--amber"></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <span class="tl-role">Healthcare Specialist</span>
+              <span class="tl-company">Boots UK</span>
+            </div>
+            <span class="tl-date">2023 – Present</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Spot health-product trends in real time to improve service quality and stock strategy.</li>
+            <li>Translate customer insights into data-backed recommendations for team leads.</li>
+            <li>Bridge the gap between frontline operations and data-driven decision-making.</li>
+          </ul>
+          <div class="tl-tags">
+            <span>Customer Insights</span><span>Analytics</span><span>Healthcare</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="projects"></div>
   <div id="projects"></div>
   <div id="skills"></div>
   <div id="contact"></div>
