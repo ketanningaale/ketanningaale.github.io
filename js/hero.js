@@ -122,11 +122,11 @@ function initRoleCycler() {
   if (!el) return;
 
   const roles = [
-    'Software Engineer',
-    'Full-Stack Developer',
-    'AI/ML Engineer',
+    'Analytics Engineer',
     'Data Scientist',
-    'Web3 Developer',
+    'ML Researcher',
+    'HealthTech Engineer',
+    'AI/ML Specialist',
   ];
 
   let roleIdx = 0;
