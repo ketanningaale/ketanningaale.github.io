@@ -1902,18 +1902,6 @@ footer {
 }
 
 /* ============================================================
-   REVEAL MASK — text slides up from behind overflow:hidden
-   ============================================================ */
-.reveal-mask {
-  overflow: hidden;
-  display: block;
-}
-
-.reveal-mask > [data-reveal] {
-  opacity: 1 !important; /* Override fade for mask elements */
-}
-
-/* ============================================================
    PUBLICATIONS SECTION
    ============================================================ */
 #publications {
@@ -2055,6 +2043,11 @@ footer {
 }
 
 .no-js [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+.no-js .reveal-mask [data-reveal] {
   opacity: 1;
   transform: none;
 }
