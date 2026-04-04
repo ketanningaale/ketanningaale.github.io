@@ -164,14 +164,21 @@ function initRoleCycler() {
   setTimeout(type, 1200);
 }
 
-/* ---- Parallax on mouse move ---- */
+/* ---- Parallax on mouse move + scroll ---- */
 function initHeroParallax() {
   const hero = document.getElementById('hero');
   if (!hero) return;
 
+  const layer1 = hero.querySelector('.parallax-layer--1');
+  const layer2 = hero.querySelector('.parallax-layer--2');
+  const layer3 = hero.querySelector('.parallax-layer--3');
+  const canvas = document.getElementById('hero-canvas');
+
   let tX = 0, tY = 0;
   let cX = 0, cY = 0;
+  let scrollY = 0;
 
+  // Mouse parallax
   document.addEventListener('mousemove', (e) => {
     const cx = window.innerWidth / 2;
     const cy = window.innerHeight / 2;
@@ -179,13 +186,39 @@ function initHeroParallax() {
     tY = (e.clientY - cy) / cy;
   });
 
+  // Scroll parallax
+  window.addEventListener('scroll', () => {
+    scrollY = window.scrollY;
+  }, { passive: true });
+
   function animate() {
     cX += (tX - cX) * 0.05;
     cY += (tY - cY) * 0.05;
 
-    const canvas = document.getElementById('hero-canvas');
+    const sy = scrollY * 0.4;
+
+    // Canvas moves slowest (background)
     if (canvas) {
-      canvas.style.transform = `translate(${cX * -12}px, ${cY * -8}px) scale(1.04)`;
+      canvas.style.transform =
+        `translate(${cX * -10}px, ${cY * -6 + sy * 0.3}px) scale(1.04)`;
+    }
+
+    // Layer 1 — moves at 40% of mouse, 50% of scroll
+    if (layer1) {
+      layer1.style.transform =
+        `translate(${cX * -18}px, ${cY * -12 + sy * 0.5}px)`;
+    }
+
+    // Layer 2 — moves at 25% of mouse, 30% of scroll (opposite direction)
+    if (layer2) {
+      layer2.style.transform =
+        `translate(${cX * 12}px, ${cY * 8 + sy * 0.3}px)`;
+    }
+
+    // Layer 3 (grid) — very subtle, mostly scroll
+    if (layer3) {
+      layer3.style.transform =
+        `translate(${cX * -4}px, ${cY * -3 + sy * 0.15}px)`;
     }
 
     requestAnimationFrame(animate);
