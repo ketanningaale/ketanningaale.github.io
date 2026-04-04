@@ -3,8 +3,71 @@
    Dark cinematic aesthetic inspired by kprverse.com
    ============================================================ */
 
-/* ---- Google Fonts ---- */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+/* ---- Local Fonts (from kprverse repo) ---- */
+@font-face {
+  font-family: 'ABCWhyte';
+  src: url('../fonts/ABCWhyte.woff2') format('woff2'),
+       url('../fonts/ABCWhyte.ttf')   format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ABCWhyteInktrap';
+  src: url('../fonts/ABCWhyteInktrap.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPFraktionSans';
+  src: url('../fonts/PPFraktionSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPFraktionSans';
+  src: url('../fonts/PPFraktionSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HexaframeCF';
+  src: url('../fonts/HexaframeCF-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('../fonts/IBMPlexMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('../fonts/IBMPlexMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBMPlexMono';
+  src: url('../fonts/IBMPlexMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ---- Design Tokens ---- */
 :root {
@@ -20,9 +83,12 @@
   --border:       rgba(255,255,255,0.1);
   --border-dim:   rgba(255,255,255,0.05);
 
-  /* Typography */
-  --font-ui:      'IBM Plex Mono', 'Courier New', monospace;
-  --font-display: 'Helvetica Neue', Arial, 'Segoe UI', sans-serif;
+  /* Typography — kprverse font stack */
+  --font-ui:          'IBMPlexMono', 'Courier New', monospace;
+  --font-display:     'ABCWhyte', 'Helvetica Neue', Arial, sans-serif;
+  --font-inktrap:     'ABCWhyteInktrap', 'ABCWhyte', sans-serif;
+  --font-accent:      'PPFraktionSans', 'Helvetica Neue', sans-serif;
+  --font-decorative:  'HexaframeCF', 'ABCWhyte', sans-serif;
 
   /* Layout */
   --nav-width:    56px;
@@ -135,10 +201,11 @@ button {
   background: var(--bg);
   z-index: var(--z-preloader);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  transition: opacity 0.8s var(--ease-out), visibility 0.8s;
+  overflow: hidden;
+  transition: opacity 1s var(--ease-out), visibility 1s;
 }
 
 #preloader.hidden {
@@ -147,23 +214,62 @@ button {
   pointer-events: none;
 }
 
-.preloader-inner {
-  width: min(400px, 80vw);
+/* Big KI initials */
+.preloader-ki {
+  display: flex;
+  align-items: baseline;
+  gap: 0.02em;
+  user-select: none;
+  pointer-events: none;
+}
+
+.preloader-ki-k,
+.preloader-ki-i {
+  font-family: var(--font-decorative);
+  font-size: clamp(8rem, 22vw, 20rem);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--fg);
+  display: block;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out), filter 0.6s;
+}
+
+.preloader-ki-k { transition-delay: 0.05s; }
+.preloader-ki-i { transition-delay: 0.2s; }
+
+.preloader-ki.visible .preloader-ki-k,
+.preloader-ki.visible .preloader-ki-i {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Exit: scale up + blur */
+#preloader.hiding .preloader-ki-k,
+#preloader.hiding .preloader-ki-i {
+  opacity: 0;
+  transform: scale(1.25) translateY(-10px);
+  filter: blur(8px);
+}
+
+/* Loading bar + meta — fixed to bottom of preloader */
+.preloader-bottom {
+  position: absolute;
+  bottom: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(420px, 80vw);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 14px;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out) 0.4s;
 }
 
-.preloader-logo {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--fg);
-}
-
-.preloader-logo span {
-  opacity: 0.4;
+.preloader-bottom.visible {
+  opacity: 1;
 }
 
 .preloader-bar-track {
@@ -181,32 +287,34 @@ button {
   height: 100%;
   width: 0%;
   background: var(--fg);
-  transition: width 0.3s var(--ease-out);
+  transition: width 0.25s linear;
 }
 
 .preloader-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.7rem;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--fg-muted);
 }
 
 .preloader-percent {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--fg-dim);
   font-variant-numeric: tabular-nums;
+  font-family: var(--font-ui);
 }
 
 .preloader-file {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   color: var(--fg-muted);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 60%;
+  max-width: 65%;
 }
 
 /* ============================================================
@@ -448,7 +556,10 @@ button {
 .menu-nav-item {
   display: block;
   font-family: var(--font-display);
+  font-variation-settings: "wght" 700;
   font-size: clamp(3rem, 7vw, 6.4rem);
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -671,11 +782,13 @@ body.cursor-click #cursor-outer {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-size: clamp(4rem, 11vw, 10rem);
   font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
-  margin-bottom: 32px;
+  font-variation-settings: "wght" 700;
+  letter-spacing: -0.07em;
+  line-height: 0.87;
+  text-transform: uppercase;
+  margin-bottom: 36px;
   overflow: hidden;
 }
 
@@ -832,8 +945,10 @@ section {
 }
 
 .section-label {
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
+  font-family: var(--font-accent);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--fg-muted);
   display: flex;
@@ -851,10 +966,12 @@ section {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 5.5vw, 5rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  font-variation-settings: "wght" 700;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  text-transform: uppercase;
 }
 
 .section-number {
