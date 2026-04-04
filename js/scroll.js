@@ -30,11 +30,28 @@ function initReveal() {
   const els = document.querySelectorAll('[data-reveal]');
   if (!els.length) return;
 
+  // For mask reveals, observe the parent .reveal-mask container so the
+  // trigger fires when the mask wrapper enters the viewport (not the
+  // hidden child which may be clipped to zero height).
+  function getObserveTarget(el) {
+    const parent = el.parentElement;
+    if (parent && parent.classList.contains('reveal-mask')) {
+      return parent;
+    }
+    return el;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
+          // For mask wrappers, reveal all [data-reveal] children
+          if (entry.target.classList.contains('reveal-mask')) {
+            const children = entry.target.querySelectorAll('[data-reveal]');
+            children.forEach((child) => child.classList.add('revealed'));
+          } else {
+            entry.target.classList.add('revealed');
+          }
           observer.unobserve(entry.target);
         }
       });
@@ -42,7 +59,14 @@ function initReveal() {
     { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
   );
 
-  els.forEach((el) => observer.observe(el));
+  const observed = new Set();
+  els.forEach((el) => {
+    const target = getObserveTarget(el);
+    if (!observed.has(target)) {
+      observed.add(target);
+      observer.observe(target);
+    }
+  });
 }
 
 /* ---- Active Section / Nav Dots ---- */
