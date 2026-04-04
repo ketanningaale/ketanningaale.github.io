@@ -1210,6 +1210,113 @@
       .skills-layout { grid-template-columns: 1fr; }
       .dissertation-card { padding: 1.5rem; }
     }
+
+    /* ── Hamburger ──────────────────────────────────────────────── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text-secondary);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--mauve); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--mauve); }
+
+    /* ── Mobile nav overlay ─────────────────────────────────────── */
+    .mobile-nav {
+      position: fixed; inset: 0; z-index: 150;
+      background: rgba(10,6,20,0.97);
+      backdrop-filter: blur(22px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1.5rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .mobile-nav.open { opacity: 1; pointer-events: all; }
+    .mobile-nav a {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 8vw, 2.4rem);
+      font-weight: 800;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      transform: translateY(24px);
+      opacity: 0;
+      transition: opacity 0.45s ease, transform 0.45s ease, color 0.25s;
+    }
+    .mobile-nav.open a { opacity: 1; transform: translateY(0); }
+    .mobile-nav.open a:nth-child(1) { transition-delay: 0.05s; }
+    .mobile-nav.open a:nth-child(2) { transition-delay: 0.10s; }
+    .mobile-nav.open a:nth-child(3) { transition-delay: 0.15s; }
+    .mobile-nav.open a:nth-child(4) { transition-delay: 0.20s; }
+    .mobile-nav.open a:nth-child(5) { transition-delay: 0.25s; }
+    .mobile-nav a:hover { color: var(--mauve); }
+
+    @media (max-width: 640px) {
+      .hamburger { display: flex; }
+    }
+
+    /* ── Double-row ticker ──────────────────────────────────────── */
+    .ticker-band {
+      overflow: hidden;
+      background: rgba(255,255,255,0.018);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .ticker-row {
+      display: flex;
+      white-space: nowrap;
+      padding: 0.7rem 0;
+    }
+    .ticker-row--fwd { animation: tickLeft  34s linear infinite; }
+    .ticker-row--rev { animation: tickRight 28s linear infinite; border-top: 1px solid var(--border); }
+    .ticker-row:hover { animation-play-state: paused; }
+
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      padding: 0 2rem;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .ticker-item .t-dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--purple); flex-shrink: 0;
+    }
+    .ticker-item .t-val { color: var(--mauve); font-weight: 600; margin-right: 0.15rem; }
+
+    @keyframes tickLeft  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
+    @keyframes tickRight { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
+
+    /* ── 3-D tilt card ──────────────────────────────────────────── */
+    .tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.08s ease-out, box-shadow 0.35s, border-color 0.35s;
+    }
+    .tilt-card:not(:hover) {
+      transition: transform 0.65s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s, border-color 0.35s;
+    }
+
+    /* ── Magnetic btn ───────────────────────────────────────────── */
+    .btn-magnetic {
+      transition: transform 0.18s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s;
+    }
   </style>
 </head>
 <body>
@@ -1224,7 +1331,19 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about"      id="mnAbout">About</a>
+    <a href="#experience" id="mnExp">Experience</a>
+    <a href="#projects"   id="mnProj">Projects</a>
+    <a href="#skills"     id="mnSkills">Skills</a>
+    <a href="#contact"    id="mnContact">Contact</a>
+  </div>
 
   <!-- Custom cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
@@ -1276,8 +1395,8 @@
       </p>
 
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View my work</a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        <a href="#projects" class="btn btn-primary btn-magnetic">View my work</a>
+        <a href="#contact" class="btn btn-ghost btn-magnetic">Get in touch</a>
       </div>
     </div>
 
@@ -1286,6 +1405,12 @@
       <div class="scroll-line"></div>
     </div>
   </section>
+
+  <!-- ── Ticker band ──────────────────────────────────────────── -->
+  <div class="ticker-band">
+    <div class="ticker-row ticker-row--fwd" id="tickerFwd"></div>
+    <div class="ticker-row ticker-row--rev" id="tickerRev"></div>
+  </div>
 
   <!-- ── About ─────────────────────────────────────────────────── -->
   <section id="about">
@@ -1353,7 +1478,7 @@
       <div class="tl-item reveal" style="--delay:0.1s">
         <div class="tl-dot tl-dot--amber"></div>
         <div class="tl-line"></div>
-        <div class="tl-card">
+        <div class="tl-card tilt-card">
           <div class="tl-header">
             <div>
               <span class="tl-role">Analytics Engineer &amp; Researcher</span>
@@ -1376,7 +1501,7 @@
       <div class="tl-item reveal" style="--delay:0.15s">
         <div class="tl-dot"></div>
         <div class="tl-line"></div>
-        <div class="tl-card">
+        <div class="tl-card tilt-card">
           <div class="tl-header">
             <div>
               <span class="tl-role">Exam Invigilator</span>
@@ -1398,7 +1523,7 @@
       <div class="tl-item reveal" style="--delay:0.2s">
         <div class="tl-dot"></div>
         <div class="tl-line"></div>
-        <div class="tl-card">
+        <div class="tl-card tilt-card">
           <div class="tl-header">
             <div>
               <span class="tl-role">Health &amp; Wellness Specialist</span>
@@ -1421,7 +1546,7 @@
       <div class="tl-item reveal" style="--delay:0.25s">
         <div class="tl-dot"></div>
         <div class="tl-line"></div>
-        <div class="tl-card">
+        <div class="tl-card tilt-card">
           <div class="tl-header">
             <div>
               <span class="tl-role">Associate Consultant</span>
@@ -1444,7 +1569,7 @@
       <div class="tl-item reveal" style="--delay:0.3s">
         <div class="tl-dot"></div>
         <div class="tl-line"></div>
-        <div class="tl-card">
+        <div class="tl-card tilt-card">
           <div class="tl-header">
             <div>
               <span class="tl-role">Content Creator</span>
@@ -1466,7 +1591,7 @@
       <div class="tl-item reveal" style="--delay:0.35s">
         <div class="tl-dot"></div>
         <div class="tl-line"></div>
-        <div class="tl-card">
+        <div class="tl-card tilt-card">
           <div class="tl-header">
             <div>
               <span class="tl-role">Product Development Assistant</span>
@@ -1537,7 +1662,7 @@
     <!-- Publication -->
     <div class="projects-grid" style="margin-top:1.25rem">
 
-      <div class="proj-card reveal" style="--delay:0.2s; --accent:124,92,191">
+      <div class="proj-card tilt-card reveal" style="--delay:0.2s; --accent:124,92,191">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F4DD;</div>
@@ -1557,7 +1682,7 @@
         </div>
       </div>
 
-      <div class="proj-card reveal" style="--delay:0.25s; --accent:212,149,106">
+      <div class="proj-card tilt-card reveal" style="--delay:0.25s; --accent:212,149,106">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x2696;&#xFE0F;</div>
@@ -1576,7 +1701,7 @@
         </div>
       </div>
 
-      <div class="proj-card reveal" style="--delay:0.3s; --accent:74,111,165">
+      <div class="proj-card tilt-card reveal" style="--delay:0.3s; --accent:74,111,165">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F4C8;</div>
@@ -1595,7 +1720,7 @@
         </div>
       </div>
 
-      <div class="proj-card reveal" style="--delay:0.35s; --accent:183,141,224">
+      <div class="proj-card tilt-card reveal" style="--delay:0.35s; --accent:183,141,224">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F30D;</div>
@@ -1614,7 +1739,7 @@
         </div>
       </div>
 
-      <div class="proj-card reveal" style="--delay:0.4s; --accent:183,90,120">
+      <div class="proj-card tilt-card reveal" style="--delay:0.4s; --accent:183,90,120">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F6F8;</div>
@@ -1633,7 +1758,7 @@
         </div>
       </div>
 
-      <div class="proj-card reveal" style="--delay:0.45s; --accent:80,160,120">
+      <div class="proj-card tilt-card reveal" style="--delay:0.45s; --accent:80,160,120">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F525;</div>
@@ -1921,7 +2046,7 @@
     // ── Star field ────────────────────────────────────────────
     const sc  = document.getElementById('stars');
     const sctx = sc.getContext('2d');
-    let SW, SH, stars = [];
+    let SW, SH, stars = [], shooters = [];
 
     function resizeStars() {
       SW = sc.width  = sc.offsetWidth;
@@ -1950,8 +2075,41 @@
         sctx.fillStyle = `rgba(237,232,245,${Math.max(0, alpha)})`;
         sctx.fill();
       }
+      // Shooting stars
+      shooters = shooters.filter(sh => sh.life < sh.maxLife);
+      for (const sh of shooters) {
+        sh.life++;
+        sh.x += Math.cos(sh.angle) * sh.speed;
+        sh.y += Math.sin(sh.angle) * sh.speed;
+        const fade = Math.max(0, 1 - sh.life / sh.maxLife);
+        const tx = sh.x - Math.cos(sh.angle) * sh.len;
+        const ty = sh.y - Math.sin(sh.angle) * sh.len;
+        const grd = sctx.createLinearGradient(tx, ty, sh.x, sh.y);
+        grd.addColorStop(0, 'rgba(237,232,245,0)');
+        grd.addColorStop(1, `rgba(237,232,245,${fade * 0.9})`);
+        sctx.beginPath();
+        sctx.moveTo(tx, ty);
+        sctx.lineTo(sh.x, sh.y);
+        sctx.strokeStyle = grd;
+        sctx.lineWidth = 1.5;
+        sctx.stroke();
+      }
       requestAnimationFrame(drawStars);
     }
+
+    function spawnShooter() {
+      shooters.push({
+        x: Math.random() * SW * 0.85 + SW * 0.05,
+        y: Math.random() * SH * 0.45,
+        len: 90 + Math.random() * 110,
+        speed: 7 + Math.random() * 9,
+        angle: Math.PI / 4 + (Math.random() - 0.5) * 0.5,
+        life: 0,
+        maxLife: 38 + Math.random() * 22,
+      });
+      setTimeout(spawnShooter, 2800 + Math.random() * 5200);
+    }
+    spawnShooter();
 
     resizeStars(); makeStars(); drawStars();
     window.addEventListener('resize', () => { resizeStars(); makeStars(); });
@@ -2019,6 +2177,85 @@
     }, { threshold: 0.3 });
     const profBars = document.querySelector('.prof-bars');
     if (profBars) barObserver.observe(profBars);
+
+    // ── Hamburger nav ─────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    function closeMobileNav() {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+
+    // ── Ticker band ───────────────────────────────────────────
+    const TICKER_FWD = [
+      {val:'3+', label:'yrs industry exp'},
+      {val:'MSc', label:'Data Science · Southampton'},
+      {val:'Distinction', label:'Dissertation score'},
+      {val:'PyTorch', label:'Deep Learning'},
+      {val:'Azure', label:'Cloud Engineering'},
+      {val:'HealthTech', label:'Analytics @ Healf'},
+      {val:'LiDAR', label:'3-D Perception'},
+      {val:'NLP', label:'Transformer Models'},
+      {val:'DBT', label:'Data Engineering'},
+      {val:'Presidential', label:'Scholar'},
+    ];
+    const TICKER_REV = [
+      {val:'HMM', label:'Sequential Modelling'},
+      {val:'MLOps', label:'Production ML'},
+      {val:'7.5', label:'IELTS Score'},
+      {val:'Runner-up', label:'Smart India Hackathon'},
+      {val:'KITTI', label:'Benchmark Dataset'},
+      {val:'Blockchain', label:'Hyperledger Fabric'},
+      {val:'Tableau', label:'Data Viz'},
+      {val:'SQL', label:'Advanced Querying'},
+      {val:'Biomarker', label:'Health Research'},
+      {val:'OpenCV', label:'Computer Vision'},
+    ];
+
+    function buildTicker(el, items) {
+      const doubled = [...items, ...items];
+      doubled.forEach(({val, label}) => {
+        const span = document.createElement('span');
+        span.className = 'ticker-item';
+        span.innerHTML = `<span class="t-dot"></span><span class="t-val">${val}</span>${label}`;
+        el.appendChild(span);
+      });
+    }
+    const tFwd = document.getElementById('tickerFwd');
+    const tRev = document.getElementById('tickerRev');
+    if (tFwd) buildTicker(tFwd, TICKER_FWD);
+    if (tRev) buildTicker(tRev, TICKER_REV);
+
+    // ── 3-D card tilt ─────────────────────────────────────────
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const rx = ((e.clientY - r.top  - r.height / 2) / (r.height / 2)) * -7;
+        const ry = ((e.clientX - r.left - r.width  / 2) / (r.width  / 2)) *  7;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(8px)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+
+    // ── Magnetic buttons ──────────────────────────────────────
+    if (window.matchMedia('(hover: hover)').matches) {
+      document.querySelectorAll('.btn-magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+          const r = btn.getBoundingClientRect();
+          const dx = e.clientX - (r.left + r.width  / 2);
+          const dy = e.clientY - (r.top  + r.height / 2);
+          btn.style.transform = `translate(${dx * 0.28}px, ${dy * 0.28}px)`;
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+      });
+    }
   </script>
 </body>
 </html>
