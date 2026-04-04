@@ -1317,9 +1317,90 @@
     .btn-magnetic {
       transition: transform 0.18s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s;
     }
+
+    /* ── Scroll progress bar ────────────────────────────────────── */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--purple), var(--mauve), var(--amber));
+      z-index: 300;
+      pointer-events: none;
+      transition: width 0.08s linear;
+      box-shadow: 0 0 8px rgba(183,141,224,0.6);
+    }
+
+    /* ── Active nav link ────────────────────────────────────────── */
+    .nav-links a {
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      height: 1px;
+      width: 0;
+      background: var(--mauve);
+      transition: width 0.3s ease;
+    }
+    .nav-links a.nav-active {
+      color: var(--text-primary);
+    }
+    .nav-links a.nav-active::after { width: 100%; }
+
+    /* ── Spotlight glow on cards ────────────────────────────────── */
+    .spotlight-card {
+      overflow: hidden;
+    }
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle 220px at var(--mx, 50%) var(--my, 50%),
+        rgba(183,141,224,0.10) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: inherit;
+    }
+    .spotlight-card:hover::before { opacity: 1; }
+
+    /* ── Grain texture overlay ──────────────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* ── Typewriter cursor ──────────────────────────────────────── */
+    .tw-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 0.85em;
+      background: var(--mauve);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: twBlink 1s step-end infinite;
+    }
+    @keyframes twBlink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
   </style>
 </head>
 <body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Nav -->
   <nav>
@@ -1382,7 +1463,7 @@
 
     <!-- Content -->
     <div class="hero-content">
-      <span class="hero-tag">Analytics Engineer &amp; AI Researcher · HealthTech · Data Science</span>
+      <span class="hero-tag"><span id="twText">Analytics Engineer</span><span class="tw-cursor"></span></span>
 
       <h1 class="hero-name">
         <span class="line-1">Ketann</span>
@@ -1448,19 +1529,19 @@
       <!-- Right: stat cards -->
       <div class="about-stats">
         <div class="stat-card reveal" style="--delay:0.1s">
-          <span class="stat-num">77<em>/100</em></span>
+          <span class="stat-num"><span class="count-up" data-target="77">0</span><em>/100</em></span>
           <span class="stat-desc">MSc dissertation score — LiDAR localisation for autonomous vehicles</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.2s">
-          <span class="stat-num">1<em>/25</em></span>
+          <span class="stat-num"><span class="count-up" data-target="1">0</span><em>/25</em></span>
           <span class="stat-desc">Southampton Presidential International Scholarship recipient</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.3s">
-          <span class="stat-num">95<em>%</em></span>
+          <span class="stat-num"><span class="count-up" data-target="95">0</span><em>%</em></span>
           <span class="stat-desc">reduction in localisation error achieved in dissertation research</span>
         </div>
         <div class="stat-card reveal" style="--delay:0.4s">
-          <span class="stat-num">3</span>
+          <span class="stat-num"><span class="count-up" data-target="3">0</span></span>
           <span class="stat-desc">degrees across Engineering, Business, and Data Science</span>
         </div>
       </div>
@@ -1662,7 +1743,7 @@
     <!-- Publication -->
     <div class="projects-grid" style="margin-top:1.25rem">
 
-      <div class="proj-card tilt-card reveal" style="--delay:0.2s; --accent:124,92,191">
+      <div class="proj-card tilt-card spotlight-card reveal" style="--delay:0.2s; --accent:124,92,191">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F4DD;</div>
@@ -1682,7 +1763,7 @@
         </div>
       </div>
 
-      <div class="proj-card tilt-card reveal" style="--delay:0.25s; --accent:212,149,106">
+      <div class="proj-card tilt-card spotlight-card reveal" style="--delay:0.25s; --accent:212,149,106">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x2696;&#xFE0F;</div>
@@ -1701,7 +1782,7 @@
         </div>
       </div>
 
-      <div class="proj-card tilt-card reveal" style="--delay:0.3s; --accent:74,111,165">
+      <div class="proj-card tilt-card spotlight-card reveal" style="--delay:0.3s; --accent:74,111,165">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F4C8;</div>
@@ -1720,7 +1801,7 @@
         </div>
       </div>
 
-      <div class="proj-card tilt-card reveal" style="--delay:0.35s; --accent:183,141,224">
+      <div class="proj-card tilt-card spotlight-card reveal" style="--delay:0.35s; --accent:183,141,224">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F30D;</div>
@@ -1739,7 +1820,7 @@
         </div>
       </div>
 
-      <div class="proj-card tilt-card reveal" style="--delay:0.4s; --accent:183,90,120">
+      <div class="proj-card tilt-card spotlight-card reveal" style="--delay:0.4s; --accent:183,90,120">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F6F8;</div>
@@ -1758,7 +1839,7 @@
         </div>
       </div>
 
-      <div class="proj-card tilt-card reveal" style="--delay:0.45s; --accent:80,160,120">
+      <div class="proj-card tilt-card spotlight-card reveal" style="--delay:0.45s; --accent:80,160,120">
         <div class="proj-glow"></div>
         <div class="proj-inner">
           <div class="proj-icon">&#x1F525;</div>
@@ -2255,6 +2336,143 @@
         });
         btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
       });
+    }
+
+    // ─────────────────────────────────────────────────────────
+    // PART 3 — Scroll progress · Active nav · Counter anim
+    // ─────────────────────────────────────────────────────────
+
+    // Scroll progress bar
+    const scrollProg = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+      scrollProg.style.width = Math.min(100, pct) + '%';
+    }, { passive: true });
+
+    // Active nav link based on scroll position
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => {
+            a.classList.toggle('nav-active', a.getAttribute('href') === '#' + e.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    sections.forEach(s => navObserver.observe(s));
+
+    // Smooth anchor scroll respecting fixed nav height
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = 72;
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+      });
+    });
+
+    // Counter animation (count-up on scroll reveal)
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(ease * target);
+        if (t < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(tick);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.count-up').forEach(animateCounter);
+          counterObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.about-stats').forEach(el => counterObserver.observe(el));
+
+    // ─────────────────────────────────────────────────────────
+    // PART 4 — Spotlight glow · Text scramble · (grain via CSS)
+    // ─────────────────────────────────────────────────────────
+
+    // Spotlight glow on project cards (CSS var --mx/--my)
+    document.querySelectorAll('.spotlight-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width  * 100) + '%');
+        card.style.setProperty('--my', ((e.clientY - r.top ) / r.height * 100) + '%');
+      });
+    });
+
+    // Text scramble on section titles
+    const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&';
+    function scramble(el) {
+      const original = el.textContent;
+      let iter = 0;
+      const maxIter = original.length * 3;
+      const id = setInterval(() => {
+        el.textContent = original.split('').map((ch, i) => {
+          if (ch === ' ') return ' ';
+          if (i < Math.floor(iter / 3)) return original[i];
+          return CHARS[Math.floor(Math.random() * CHARS.length)];
+        }).join('');
+        iter++;
+        if (iter > maxIter) { el.textContent = original; clearInterval(id); }
+      }, 30);
+    }
+    const scrambleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          scramble(e.target);
+          scrambleObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.section-title').forEach(el => scrambleObserver.observe(el));
+
+    // ─────────────────────────────────────────────────────────
+    // PART 5 — Typewriter cycling roles
+    // ─────────────────────────────────────────────────────────
+    const TW_ROLES = [
+      'Analytics Engineer',
+      'AI / ML Researcher',
+      'HealthTech Builder',
+      'Data Scientist',
+      'Presidential Scholar',
+      'LiDAR & Perception',
+    ];
+    const twEl = document.getElementById('twText');
+    if (twEl) {
+      let twIdx = 0, twChar = 0, twDeleting = false;
+      function twTick() {
+        const current = TW_ROLES[twIdx];
+        if (!twDeleting) {
+          twEl.textContent = current.slice(0, ++twChar);
+          if (twChar === current.length) {
+            twDeleting = true;
+            setTimeout(twTick, 1800);
+            return;
+          }
+          setTimeout(twTick, 65);
+        } else {
+          twEl.textContent = current.slice(0, --twChar);
+          if (twChar === 0) {
+            twDeleting = false;
+            twIdx = (twIdx + 1) % TW_ROLES.length;
+            setTimeout(twTick, 320);
+            return;
+          }
+          setTimeout(twTick, 35);
+        }
+      }
+      setTimeout(twTick, 1200);
     }
   </script>
 </body>
