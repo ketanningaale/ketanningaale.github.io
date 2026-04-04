@@ -72,7 +72,7 @@
 /* ---- Design Tokens ---- */
 :root {
   /* Colors */
-  --bg:           #080808;
+  --bg:           #070707;
   --bg-alt:       #0f0f0f;
   --bg-card:      #111111;
   --fg:           #ffffff;
@@ -80,6 +80,7 @@
   --fg-muted:     rgba(255,255,255,0.28);
   --accent:       #ffffff;
   --accent-warm:  #e8ddd0;
+  --accent-glow:  rgba(255,255,255,0.03);
   --border:       rgba(255,255,255,0.1);
   --border-dim:   rgba(255,255,255,0.05);
 
@@ -782,11 +783,11 @@ body.cursor-click #cursor-outer {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 11vw, 10rem);
+  font-size: clamp(4rem, 13vw, 14rem);
   font-weight: 700;
   font-variation-settings: "wght" 700;
   letter-spacing: -0.07em;
-  line-height: 0.87;
+  line-height: 0.85;
   text-transform: uppercase;
   margin-bottom: 36px;
   overflow: hidden;
@@ -981,7 +982,7 @@ section {
   font-variant-numeric: tabular-nums;
 }
 
-/* Reveal animations */
+/* Reveal animations — standard fade-up (for cards, blocks) */
 [data-reveal] {
   opacity: 0;
   transform: translateY(30px);
@@ -989,6 +990,23 @@ section {
 }
 
 [data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mask reveal — text slides up from behind overflow:hidden parent */
+.reveal-mask {
+  overflow: hidden;
+  display: block;
+}
+
+.reveal-mask [data-reveal] {
+  opacity: 1;
+  transform: translateY(105%);
+  transition: transform 1s var(--ease-out);
+}
+
+.reveal-mask [data-reveal].revealed {
   opacity: 1;
   transform: translateY(0);
 }
