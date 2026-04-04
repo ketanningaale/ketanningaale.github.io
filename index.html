@@ -38,7 +38,7 @@
       "name": "University of Southampton"
     },
     "sameAs": [
-      "https://linkedin.com/in/ketanningaale",
+      "https://linkedin.com/in/ketann-ingaale",
       "https://github.com/ketanningaale"
     ]
   }
@@ -109,7 +109,7 @@
     </ul>
 
     <div class="nav-socials" aria-label="Social links">
-      <a href="https://linkedin.com/in/ketanningaale" target="_blank" rel="noopener" aria-label="LinkedIn">LI</a>
+      <a href="https://linkedin.com/in/ketann-ingaale" target="_blank" rel="noopener" aria-label="LinkedIn">LI</a>
       <a href="https://github.com/ketanningaale" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
     </div>
   </nav>
@@ -136,7 +136,7 @@
     <div class="menu-footer">
       <div class="menu-footer-col">
         <p class="menu-footer-label">Connect</p>
-        <a href="https://linkedin.com/in/ketanningaale" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://linkedin.com/in/ketann-ingaale" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/ketanningaale" target="_blank" rel="noopener">GitHub</a>
       </div>
       <div class="menu-footer-col">
@@ -156,6 +156,12 @@
     <!-- HERO -->
     <section id="hero" aria-label="Introduction">
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+      <!-- Parallax depth layers -->
+      <div class="parallax-layer parallax-layer--1" aria-hidden="true"></div>
+      <div class="parallax-layer parallax-layer--2" aria-hidden="true"></div>
+      <div class="parallax-layer parallax-layer--3" aria-hidden="true"></div>
+
       <div class="hero-content">
         <p class="hero-eyebrow">Available for opportunities &middot; 2025</p>
         <h1 class="hero-title">
@@ -326,10 +332,29 @@
       </div>
       <div class="projects-grid">
 
-        <article class="project-card" data-tilt data-reveal data-reveal-delay="1">
-          <p class="project-num">001</p>
+        <!-- Published research paper — real, verified -->
+        <article class="project-card project-card--featured" data-tilt data-reveal data-reveal-delay="1">
+          <p class="project-num">001 &middot; <span style="color:rgba(255,255,255,0.4);font-size:0.55rem;letter-spacing:0.12em;">PUBLISHED PAPER</span></p>
+          <h3 class="project-title">Blockchain-Based Grievance Management System</h3>
+          <p class="project-desc">Published research on a decentralised grievance redressal system using blockchain technology to ensure transparency, immutability, and trustless resolution of complaints. Presented at an international conference.</p>
+          <ul class="project-tags" aria-label="Technologies">
+            <li class="project-tag">Blockchain</li>
+            <li class="project-tag">Smart Contracts</li>
+            <li class="project-tag">Decentralisation</li>
+            <li class="project-tag">Python</li>
+          </ul>
+          <a href="https://doi.org/10.1007/978-981-15-5788-0_20" target="_blank" rel="noopener" class="project-link" data-cursor-hover>
+            Read Paper &mdash; DOI:10.1007/978-981-15-5788-0_20
+            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <article class="project-card" data-tilt data-reveal data-reveal-delay="2">
+          <p class="project-num">002 &middot; <span style="color:rgba(255,255,255,0.4);font-size:0.55rem;letter-spacing:0.12em;">MSC DISSERTATION</span></p>
           <h3 class="project-title">LiDAR Semantic Segmentation</h3>
-          <p class="project-desc">Real-time 3D point cloud processing pipeline using deep learning for semantic segmentation of autonomous driving scenes. MSc dissertation project.</p>
+          <p class="project-desc">Real-time 3D point cloud processing pipeline for semantic segmentation of autonomous driving scenes using deep learning. Trained on the SemanticKITTI benchmark dataset.</p>
           <ul class="project-tags" aria-label="Technologies">
             <li class="project-tag">Python</li>
             <li class="project-tag">PyTorch</li>
@@ -337,40 +362,22 @@
             <li class="project-tag">Deep Learning</li>
           </ul>
           <span class="project-link">
-            Dissertation
+            MSc Dissertation
             <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
         </article>
 
-        <article class="project-card" data-tilt data-reveal data-reveal-delay="2">
-          <p class="project-num">002</p>
-          <h3 class="project-title">Health Analytics Platform</h3>
-          <p class="project-desc">End-to-end health data platform with personalised insights, streak tracking, and integration with wearable devices. Full-stack with ML recommendation engine.</p>
-          <ul class="project-tags" aria-label="Technologies">
-            <li class="project-tag">Next.js</li>
-            <li class="project-tag">TypeScript</li>
-            <li class="project-tag">Supabase</li>
-            <li class="project-tag">Python</li>
-          </ul>
-          <a href="https://github.com/ketanningaale" target="_blank" rel="noopener" class="project-link" data-cursor-hover>
-            View on GitHub
-            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </article>
-
         <article class="project-card" data-tilt data-reveal data-reveal-delay="3">
           <p class="project-num">003</p>
-          <h3 class="project-title">Solana dApp Boilerplate</h3>
-          <p class="project-desc">Production-ready Web3 boilerplate for building decentralised applications on Solana. Includes wallet connection, NFT minting, token swap UI, and Anchor program templates.</p>
+          <h3 class="project-title">GDP &amp; Economic Indicator Analysis</h3>
+          <p class="project-desc">Data science project exploring macroeconomic indicators and GDP trends across countries using statistical modelling, time series analysis, and interactive visualisations.</p>
           <ul class="project-tags" aria-label="Technologies">
-            <li class="project-tag">TypeScript</li>
-            <li class="project-tag">React</li>
-            <li class="project-tag">Solana</li>
-            <li class="project-tag">Anchor</li>
+            <li class="project-tag">Python</li>
+            <li class="project-tag">Pandas</li>
+            <li class="project-tag">Matplotlib</li>
+            <li class="project-tag">scikit-learn</li>
           </ul>
           <a href="https://github.com/ketanningaale" target="_blank" rel="noopener" class="project-link" data-cursor-hover>
             View on GitHub
@@ -382,12 +389,12 @@
 
         <article class="project-card" data-tilt data-reveal data-reveal-delay="4">
           <p class="project-num">004</p>
-          <h3 class="project-title">ML Pipeline Orchestrator</h3>
-          <p class="project-desc">Lightweight Python framework for building and deploying ML pipelines. Supports DAG-based execution, automatic versioning, and experiment tracking without heavy dependencies.</p>
+          <h3 class="project-title">Cloud ETL Pipeline</h3>
+          <p class="project-desc">Scalable extract-transform-load pipeline on AWS for processing large datasets. Includes automated scheduling, data validation, error alerting, and a monitoring dashboard.</p>
           <ul class="project-tags" aria-label="Technologies">
             <li class="project-tag">Python</li>
-            <li class="project-tag">Docker</li>
-            <li class="project-tag">FastAPI</li>
+            <li class="project-tag">AWS</li>
+            <li class="project-tag">Apache Airflow</li>
             <li class="project-tag">PostgreSQL</li>
           </ul>
           <a href="https://github.com/ketanningaale" target="_blank" rel="noopener" class="project-link" data-cursor-hover>
@@ -529,7 +536,7 @@
         </svg>
       </a>
       <nav class="contact-links" data-reveal data-reveal-delay="3" aria-label="Social links">
-        <a href="https://linkedin.com/in/ketanningaale" target="_blank" rel="noopener" class="contact-link" data-cursor-hover>LinkedIn</a>
+        <a href="https://linkedin.com/in/ketann-ingaale" target="_blank" rel="noopener" class="contact-link" data-cursor-hover>LinkedIn</a>
         <a href="https://github.com/ketanningaale" target="_blank" rel="noopener" class="contact-link" data-cursor-hover>GitHub</a>
         <a href="mailto:ketanningaale@gmail.com" class="contact-link" data-cursor-hover>Email</a>
       </nav>
