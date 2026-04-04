@@ -72,7 +72,7 @@
 /* ---- Design Tokens ---- */
 :root {
   /* Colors */
-  --bg:           #080808;
+  --bg:           #070707;
   --bg-alt:       #0f0f0f;
   --bg-card:      #111111;
   --fg:           #ffffff;
@@ -80,6 +80,7 @@
   --fg-muted:     rgba(255,255,255,0.28);
   --accent:       #ffffff;
   --accent-warm:  #e8ddd0;
+  --accent-glow:  rgba(255,255,255,0.03);
   --border:       rgba(255,255,255,0.1);
   --border-dim:   rgba(255,255,255,0.05);
 
@@ -554,12 +555,13 @@ button {
 }
 
 .menu-nav-item {
-  display: block;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
   font-family: var(--font-display);
   font-variation-settings: "wght" 700;
   font-size: clamp(3rem, 7vw, 6.4rem);
   text-transform: uppercase;
-  letter-spacing: -0.05em;
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -570,7 +572,20 @@ button {
   position: relative;
 }
 
-.menu-nav-item span {
+.menu-nav-num {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+  font-weight: 400;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  display: block;
+  transform: translateY(100%);
+  transition: transform 0.6s var(--ease-out), color var(--t-fast);
+}
+
+.menu-nav-text {
   display: block;
   transform: translateY(100%);
   transition: transform 0.6s var(--ease-out);
@@ -580,16 +595,29 @@ button {
   color: var(--fg);
 }
 
-#menu-overlay.open .menu-nav-item span {
+.menu-nav-item:hover .menu-nav-num {
+  color: var(--fg-dim);
+}
+
+#menu-overlay.open .menu-nav-item .menu-nav-num,
+#menu-overlay.open .menu-nav-item .menu-nav-text {
   transform: translateY(0);
 }
 
-.menu-nav-item:nth-child(1) span { transition-delay: 0.05s; }
-.menu-nav-item:nth-child(2) span { transition-delay: 0.1s; }
-.menu-nav-item:nth-child(3) span { transition-delay: 0.15s; }
-.menu-nav-item:nth-child(4) span { transition-delay: 0.2s; }
-.menu-nav-item:nth-child(5) span { transition-delay: 0.25s; }
-.menu-nav-item:nth-child(6) span { transition-delay: 0.3s; }
+.menu-nav-item:nth-child(1) .menu-nav-num,
+.menu-nav-item:nth-child(1) .menu-nav-text { transition-delay: 0.05s; }
+.menu-nav-item:nth-child(2) .menu-nav-num,
+.menu-nav-item:nth-child(2) .menu-nav-text { transition-delay: 0.1s; }
+.menu-nav-item:nth-child(3) .menu-nav-num,
+.menu-nav-item:nth-child(3) .menu-nav-text { transition-delay: 0.15s; }
+.menu-nav-item:nth-child(4) .menu-nav-num,
+.menu-nav-item:nth-child(4) .menu-nav-text { transition-delay: 0.2s; }
+.menu-nav-item:nth-child(5) .menu-nav-num,
+.menu-nav-item:nth-child(5) .menu-nav-text { transition-delay: 0.25s; }
+.menu-nav-item:nth-child(6) .menu-nav-num,
+.menu-nav-item:nth-child(6) .menu-nav-text { transition-delay: 0.3s; }
+.menu-nav-item:nth-child(7) .menu-nav-num,
+.menu-nav-item:nth-child(7) .menu-nav-text { transition-delay: 0.35s; }
 
 .menu-footer {
   display: flex;
@@ -782,11 +810,11 @@ body.cursor-click #cursor-outer {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 11vw, 10rem);
+  font-size: clamp(4rem, 13vw, 14rem);
   font-weight: 700;
   font-variation-settings: "wght" 700;
   letter-spacing: -0.07em;
-  line-height: 0.87;
+  line-height: 0.85;
   text-transform: uppercase;
   margin-bottom: 36px;
   overflow: hidden;
@@ -981,7 +1009,7 @@ section {
   font-variant-numeric: tabular-nums;
 }
 
-/* Reveal animations */
+/* Reveal animations — standard fade-up (for cards, blocks) */
 [data-reveal] {
   opacity: 0;
   transform: translateY(30px);
@@ -989,6 +1017,23 @@ section {
 }
 
 [data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mask reveal — text slides up from behind overflow:hidden parent */
+.reveal-mask {
+  overflow: hidden;
+  display: block;
+}
+
+.reveal-mask [data-reveal] {
+  opacity: 1;
+  transform: translateY(105%);
+  transition: transform 1s var(--ease-out);
+}
+
+.reveal-mask [data-reveal].revealed {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1272,6 +1317,110 @@ section {
 
 .project-link:hover svg {
   transform: translate(2px, -2px);
+}
+
+/* ============================================================
+   PUBLICATIONS / RECOGNITION
+   ============================================================ */
+#publications {
+  background: var(--bg-alt);
+}
+
+.pub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2px;
+}
+
+.pub-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color var(--t-fast), background var(--t-fast);
+  position: relative;
+}
+
+.pub-card:hover {
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.02);
+}
+
+.pub-type {
+  font-size: 0.55rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  border: 1px solid var(--border-dim);
+  padding: 3px 8px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.pub-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--fg);
+  flex: 1;
+}
+
+.pub-venue {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+  line-height: 1.5;
+}
+
+.pub-doi {
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+  font-family: var(--font-ui);
+}
+
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  transition: color var(--t-fast);
+  margin-top: auto;
+}
+
+.pub-link:hover {
+  color: var(--fg);
+}
+
+.pub-link svg {
+  width: 11px;
+  height: 11px;
+  transition: transform var(--t-fast);
+}
+
+.pub-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ============================================================
+   EXPERIENCE INDEX NUMBER
+   ============================================================ */
+.exp-index {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  color: var(--fg-muted);
+  font-family: var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.5;
 }
 
 /* ============================================================
@@ -1711,6 +1860,48 @@ footer {
 }
 
 /* ============================================================
+   HACKY TEXT — kprverse glitch typing animation
+   ============================================================ */
+[data-hacky] {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   LINK HOVER — sliding background, text inverts
+   ============================================================ */
+.link-hover {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.link-hover__bg {
+  position: absolute;
+  inset: 0;
+  background: var(--fg);
+  transform: translateX(-101%);
+  transition: transform 0.45s var(--ease-out);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.link-hover__text {
+  position: relative;
+  z-index: 1;
+  transition: color 0.45s var(--ease-out);
+}
+
+.link-hover:hover .link-hover__bg {
+  transform: translateX(0%);
+}
+
+.link-hover:hover .link-hover__text {
+  color: var(--bg);
+}
+
+/* ============================================================
    UTILITY
    ============================================================ */
 .sr-only {
@@ -1726,6 +1917,11 @@ footer {
 }
 
 .no-js [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+.no-js .reveal-mask [data-reveal] {
   opacity: 1;
   transform: none;
 }

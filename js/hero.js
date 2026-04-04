@@ -173,6 +173,10 @@ function initHeroParallax() {
   const layer2 = hero.querySelector('.parallax-layer--2');
   const layer3 = hero.querySelector('.parallax-layer--3');
   const canvas = document.getElementById('hero-canvas');
+  const heroContent = document.querySelector('.hero-content');
+
+  // Collect data-parallax elements throughout the page
+  const parallaxEls = document.querySelectorAll('[data-parallax]');
 
   let tX = 0, tY = 0;
   let cX = 0, cY = 0;
@@ -220,6 +224,18 @@ function initHeroParallax() {
       layer3.style.transform =
         `translate(${cX * -4}px, ${cY * -3 + sy * 0.15}px)`;
     }
+
+    // Fade hero content as user scrolls down
+    if (heroContent) {
+      const fadeOut = Math.max(0, 1 - scrollY / (window.innerHeight * 0.5));
+      heroContent.style.opacity = fadeOut;
+    }
+
+    // data-parallax elements throughout the page (data-speed attribute controls rate)
+    parallaxEls.forEach((el) => {
+      const speed = parseFloat(el.dataset.speed || el.dataset.parallax || 0.2);
+      el.style.transform = `translateY(${scrollY * speed}px)`;
+    });
 
     requestAnimationFrame(animate);
   }

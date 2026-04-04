@@ -100,13 +100,14 @@
     <a href="#hero" class="nav-logo" aria-label="Ketann Ingaale — Home">KI</a>
 
     <ul class="nav-dots" aria-label="Sections">
-      <li><a href="#hero"       class="nav-dot active" data-section="hero"       data-label="Home"       aria-label="Go to Home"></a></li>
-      <li><a href="#about"      class="nav-dot" data-section="about"      data-label="About"      aria-label="Go to About"></a></li>
-      <li><a href="#experience" class="nav-dot" data-section="experience" data-label="Experience" aria-label="Go to Experience"></a></li>
-      <li><a href="#projects"   class="nav-dot" data-section="projects"   data-label="Projects"   aria-label="Go to Projects"></a></li>
-      <li><a href="#skills"     class="nav-dot" data-section="skills"     data-label="Skills"     aria-label="Go to Skills"></a></li>
-      <li><a href="#education"  class="nav-dot" data-section="education"  data-label="Education"  aria-label="Go to Education"></a></li>
-      <li><a href="#contact"    class="nav-dot" data-section="contact"    data-label="Contact"    aria-label="Go to Contact"></a></li>
+      <li><a href="#hero"         class="nav-dot active" data-section="hero"         data-label="Home"         aria-label="Go to Home"></a></li>
+      <li><a href="#about"        class="nav-dot" data-section="about"        data-label="About"        aria-label="Go to About"></a></li>
+      <li><a href="#experience"   class="nav-dot" data-section="experience"   data-label="Experience"   aria-label="Go to Experience"></a></li>
+      <li><a href="#projects"     class="nav-dot" data-section="projects"     data-label="Projects"     aria-label="Go to Projects"></a></li>
+      <li><a href="#publications" class="nav-dot" data-section="publications" data-label="Recognition"  aria-label="Go to Recognition"></a></li>
+      <li><a href="#skills"       class="nav-dot" data-section="skills"       data-label="Skills"       aria-label="Go to Skills"></a></li>
+      <li><a href="#education"    class="nav-dot" data-section="education"    data-label="Education"    aria-label="Go to Education"></a></li>
+      <li><a href="#contact"      class="nav-dot" data-section="contact"      data-label="Contact"      aria-label="Go to Contact"></a></li>
     </ul>
 
     <div class="nav-socials" aria-label="Social links">
@@ -126,12 +127,34 @@
     <div class="menu-top">
       <p class="menu-label">Navigation</p>
       <nav class="menu-nav" aria-label="Main navigation">
-        <a href="#hero"       class="menu-nav-item" data-cursor-hover><span>Home</span></a>
-        <a href="#about"      class="menu-nav-item" data-cursor-hover><span>About</span></a>
-        <a href="#experience" class="menu-nav-item" data-cursor-hover><span>Experience</span></a>
-        <a href="#projects"   class="menu-nav-item" data-cursor-hover><span>Projects</span></a>
-        <a href="#skills"     class="menu-nav-item" data-cursor-hover><span>Skills</span></a>
-        <a href="#contact"    class="menu-nav-item" data-cursor-hover><span>Contact</span></a>
+        <a href="#hero"         class="menu-nav-item" data-cursor-hover>
+          <span class="menu-nav-num">01</span>
+          <span class="menu-nav-text">Home</span>
+        </a>
+        <a href="#about"        class="menu-nav-item" data-cursor-hover>
+          <span class="menu-nav-num">02</span>
+          <span class="menu-nav-text">About</span>
+        </a>
+        <a href="#experience"   class="menu-nav-item" data-cursor-hover>
+          <span class="menu-nav-num">03</span>
+          <span class="menu-nav-text">Experience</span>
+        </a>
+        <a href="#projects"     class="menu-nav-item" data-cursor-hover>
+          <span class="menu-nav-num">04</span>
+          <span class="menu-nav-text">Projects</span>
+        </a>
+        <a href="#publications" class="menu-nav-item" data-cursor-hover>
+          <span class="menu-nav-num">05</span>
+          <span class="menu-nav-text">Recognition</span>
+        </a>
+        <a href="#skills"       class="menu-nav-item" data-cursor-hover>
+          <span class="menu-nav-num">06</span>
+          <span class="menu-nav-text">Skills</span>
+        </a>
+        <a href="#contact"      class="menu-nav-item" data-cursor-hover>
+          <span class="menu-nav-num">07</span>
+          <span class="menu-nav-text">Contact</span>
+        </a>
       </nav>
     </div>
     <div class="menu-footer">
@@ -164,7 +187,7 @@
       <div class="parallax-layer parallax-layer--3" aria-hidden="true"></div>
 
       <div class="hero-content">
-        <p class="hero-eyebrow">Analytics Engineer &middot; HealthTech &middot; Data &amp; AI</p>
+        <p class="hero-eyebrow"><span class="reveal-mask" style="display:inline-block;vertical-align:middle;"><span data-reveal style="display:inline-block;">Analytics Engineer &middot; HealthTech &middot; Data &amp; AI</span></span></p>
         <h1 class="hero-title">
           <span class="hero-title-line">Ketann</span>
           <span class="hero-title-line hero-title-dim">Ingaale</span>
@@ -207,12 +230,14 @@
 
     <!-- ABOUT -->
     <section id="about" aria-labelledby="about-heading">
-      <div class="section-header" data-reveal>
+      <div class="section-header">
         <div>
-          <p class="section-label">About</p>
-          <h2 class="section-title" id="about-heading">Who I am</h2>
+          <p class="section-label"><span class="reveal-mask"><span data-reveal>About</span></span></p>
+          <h2 class="section-title" id="about-heading">
+            <span class="reveal-mask"><span data-reveal>Who I am</span></span>
+          </h2>
         </div>
-        <span class="section-number">01</span>
+        <span class="section-number" data-reveal>01</span>
       </div>
       <div class="about-grid">
         <div class="about-text" data-reveal data-reveal-delay="2">
@@ -246,19 +271,22 @@
 
     <!-- EXPERIENCE -->
     <section id="experience" aria-labelledby="exp-heading">
-      <div class="section-header" data-reveal>
+      <div class="section-header">
         <div>
-          <p class="section-label">Experience</p>
-          <h2 class="section-title" id="exp-heading">Where I've worked</h2>
+          <p class="section-label"><span class="reveal-mask"><span data-reveal>Experience</span></span></p>
+          <h2 class="section-title" id="exp-heading">
+            <span class="reveal-mask"><span data-reveal>Where I've worked</span></span>
+          </h2>
         </div>
-        <span class="section-number">02</span>
+        <span class="section-number" data-reveal>02</span>
       </div>
       <div class="experience-list">
 
         <article class="experience-item" data-reveal data-reveal-delay="1">
+          <span class="exp-index">01</span>
           <div class="exp-date">Nov 2025<br>Present</div>
           <div class="exp-body">
-            <h3 class="exp-company">Healf</h3>
+            <h3 class="exp-company"><span class="reveal-mask"><span data-reveal>Healf</span></span></h3>
             <p class="exp-role">Analytics Engineer &middot; London, UK</p>
             <p class="exp-desc">Designed the Evidence Graph — a scalable data and ML infrastructure connecting products to mechanisms, biomarker outcomes, and research-grade claims, forming the foundation of Healf's evidence-backed recommendation system. Led applied ML research on wellness personalisation, developing algorithms integrating biomarker, behavioural, and preference data to generate adaptive recommendations with confidence scores. Initiated the Healf Outcomes Program: real-world cohort studies measuring pre/post biomarker shifts to establish a proprietary research backbone.</p>
             <ul class="exp-tags" aria-label="Technologies used">
@@ -272,9 +300,10 @@
         </article>
 
         <article class="experience-item" data-reveal data-reveal-delay="2">
+          <span class="exp-index">02</span>
           <div class="exp-date">Feb 2025<br>Nov 2025</div>
           <div class="exp-body">
-            <h3 class="exp-company">The Boots Group</h3>
+            <h3 class="exp-company"><span class="reveal-mask"><span data-reveal>The Boots Group</span></span></h3>
             <p class="exp-role">Healthcare &amp; Wellness Specialist &middot; UK</p>
             <p class="exp-desc">Delivered evidence-based healthcare consultations across nutrition, supplementation, and lifestyle categories, aligning with NHS guidance and Boots wellness frameworks. Achieved GPhC-accredited Pharmacy NOS at RQF Level 2. Used a data-driven approach to track customer health trends, connecting clients with Boots' omnichannel services and optimising product recommendations and stock strategies.</p>
             <ul class="exp-tags" aria-label="Technologies used">
@@ -286,9 +315,10 @@
         </article>
 
         <article class="experience-item" data-reveal data-reveal-delay="3">
+          <span class="exp-index">03</span>
           <div class="exp-date">Jun 2022<br>Aug 2023</div>
           <div class="exp-body">
-            <h3 class="exp-company">Infosys</h3>
+            <h3 class="exp-company"><span class="reveal-mask"><span data-reveal>Infosys</span></span></h3>
             <p class="exp-role">Associate Consultant &middot; India</p>
             <p class="exp-desc">Engineered data analytics and ML prototypes to optimise enterprise decision systems using Python, SQL, and cloud-based pipelines. Conducted predictive modelling and statistical analysis on large-scale operational datasets, applying supervised learning and time-series techniques to improve business forecasting accuracy. Collaborated with domain experts to translate complex business challenges into research-driven analytical frameworks.</p>
             <ul class="exp-tags" aria-label="Technologies used">
@@ -302,9 +332,10 @@
         </article>
 
         <article class="experience-item" data-reveal data-reveal-delay="4">
+          <span class="exp-index">04</span>
           <div class="exp-date">Jun 2020<br>Dec 2020</div>
           <div class="exp-body">
-            <h3 class="exp-company">Leap Info Systems</h3>
+            <h3 class="exp-company"><span class="reveal-mask"><span data-reveal>Leap Info Systems</span></span></h3>
             <p class="exp-role">Product Development Assistant &middot; Pune, India</p>
             <p class="exp-desc">Collaborated with stakeholders to gather requirements and translate business challenges into scalable technical solutions. Produced technical documentation and analytical reports converting complex data into actionable recommendations. Operated in an agile start-up environment, supporting end-to-end product development and delivery.</p>
             <ul class="exp-tags" aria-label="Technologies used">
@@ -320,12 +351,14 @@
 
     <!-- PROJECTS -->
     <section id="projects" aria-labelledby="projects-heading">
-      <div class="section-header" data-reveal>
+      <div class="section-header">
         <div>
-          <p class="section-label">Projects</p>
-          <h2 class="section-title" id="projects-heading">Selected work</h2>
+          <p class="section-label"><span class="reveal-mask"><span data-reveal>Projects</span></span></p>
+          <h2 class="section-title" id="projects-heading">
+            <span class="reveal-mask"><span data-reveal>Selected work</span></span>
+          </h2>
         </div>
-        <span class="section-number">03</span>
+        <span class="section-number" data-reveal>03</span>
       </div>
       <div class="projects-grid">
 
@@ -429,14 +462,58 @@
       </div>
     </section>
 
+    <!-- PUBLICATIONS / RECOGNITION -->
+    <section id="publications" aria-labelledby="pub-heading">
+      <div class="section-header">
+        <div>
+          <p class="section-label"><span class="reveal-mask"><span data-reveal>Recognition</span></span></p>
+          <h2 class="section-title" id="pub-heading">
+            <span class="reveal-mask"><span data-reveal>Published &amp;</span></span>
+            <span class="reveal-mask"><span data-reveal data-reveal-delay="1">Recognised</span></span>
+          </h2>
+        </div>
+        <span class="section-number" data-reveal>04</span>
+      </div>
+      <div class="pub-grid">
+        <!-- Springer publication -->
+        <article class="pub-card" data-reveal data-reveal-delay="1">
+          <div class="pub-type">Conference Paper</div>
+          <h3 class="pub-title">Blockchain-Based Grievance Management System</h3>
+          <p class="pub-venue">Springer · FICTA 2020 · Advances in Intelligent Systems and Computing</p>
+          <p class="pub-doi">DOI: 10.1007/978-981-15-5788-0_20</p>
+          <a href="https://doi.org/10.1007/978-981-15-5788-0_20" target="_blank" rel="noopener" class="pub-link" data-cursor-hover>
+            View Paper <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+        <!-- Patent -->
+        <article class="pub-card" data-reveal data-reveal-delay="2">
+          <div class="pub-type">Patent</div>
+          <h3 class="pub-title">Grievance Redressal System</h3>
+          <p class="pub-venue">Government of India Patent Office</p>
+          <p class="pub-doi">Publication No. 38/2019</p>
+          <span class="pub-link" style="color:rgba(255,255,255,0.25)">Registered IP</span>
+        </article>
+        <!-- Scholarship -->
+        <article class="pub-card" data-reveal data-reveal-delay="3">
+          <div class="pub-type">Scholarship</div>
+          <h3 class="pub-title">Southampton Presidential International Scholarship</h3>
+          <p class="pub-venue">University of Southampton · 2023</p>
+          <p class="pub-doi">Competitive merit-based award for international postgraduate students</p>
+          <span class="pub-link" style="color:rgba(255,255,255,0.25)">University of Southampton</span>
+        </article>
+      </div>
+    </section>
+
     <!-- SKILLS -->
     <section id="skills" aria-labelledby="skills-heading">
-      <div class="section-header" data-reveal>
+      <div class="section-header">
         <div>
-          <p class="section-label">Skills</p>
-          <h2 class="section-title" id="skills-heading">What I work with</h2>
+          <p class="section-label"><span class="reveal-mask"><span data-reveal>Skills</span></span></p>
+          <h2 class="section-title" id="skills-heading">
+            <span class="reveal-mask"><span data-reveal>What I work with</span></span>
+          </h2>
         </div>
-        <span class="section-number">04</span>
+        <span class="section-number" data-reveal>05</span>
       </div>
       <div class="skills-grid">
         <div class="skill-category" data-reveal data-reveal-delay="1">
@@ -505,12 +582,14 @@
 
     <!-- EDUCATION -->
     <section id="education" aria-labelledby="education-heading">
-      <div class="section-header" data-reveal>
+      <div class="section-header">
         <div>
-          <p class="section-label">Education</p>
-          <h2 class="section-title" id="education-heading">Academic background</h2>
+          <p class="section-label"><span class="reveal-mask"><span data-reveal>Education</span></span></p>
+          <h2 class="section-title" id="education-heading">
+            <span class="reveal-mask"><span data-reveal>Academic background</span></span>
+          </h2>
         </div>
-        <span class="section-number">05</span>
+        <span class="section-number" data-reveal>06</span>
       </div>
       <div class="education-list">
         <article class="education-item" data-reveal data-reveal-delay="1">
