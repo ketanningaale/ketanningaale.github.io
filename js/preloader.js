@@ -1,5 +1,5 @@
 /* ============================================================
-   preloader.js — Loading screen with progress counter
+   preloader.js — Loading screen with KI initials + progress
    ============================================================ */
 
 const files = [
@@ -20,8 +20,18 @@ export function initPreloader() {
   const bar        = document.querySelector('.preloader-bar-fill');
   const pct        = document.querySelector('.preloader-percent');
   const fileEl     = document.querySelector('.preloader-file');
+  const kiEl       = document.querySelector('.preloader-ki');
+  const bottomEl   = document.querySelector('.preloader-bottom');
 
   if (!preloader) return;
+
+  // Trigger KI entrance after a brief delay
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      if (kiEl)     kiEl.classList.add('visible');
+      if (bottomEl) bottomEl.classList.add('visible');
+    });
+  });
 
   let current = 0;
   let fileIdx = 0;
@@ -71,12 +81,17 @@ export function initPreloader() {
     setProgress(100);
     if (fileEl) fileEl.textContent = 'ready.';
 
+    // Trigger KI exit animation first
     setTimeout(() => {
-      preloader.classList.add('hidden');
+      preloader.classList.add('hiding');
+
       setTimeout(() => {
-        preloader.style.display = 'none';
-        document.dispatchEvent(new CustomEvent('preloaderDone'));
-      }, 850);
+        preloader.classList.add('hidden');
+        setTimeout(() => {
+          preloader.style.display = 'none';
+          document.dispatchEvent(new CustomEvent('preloaderDone'));
+        }, 700);
+      }, 500);
     }, 300);
   }
 
@@ -86,5 +101,5 @@ export function initPreloader() {
   });
 
   // Hard fallback
-  setTimeout(hidePreloader, 3500);
+  setTimeout(hidePreloader, 4000);
 }
