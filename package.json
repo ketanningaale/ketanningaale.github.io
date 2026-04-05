@@ -1,0 +1,23 @@
+{
+  "name": "ketanningaale.github.io",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for **Ketann Ingaale** — Analytics Engineer at Healf, MSc Data Science (University of Southampton), and AI/ML researcher.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:43261/git/ketanningaale/ketanningaale.github.io"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gsap": "^3.14.2",
+    "three": "^0.183.2",
+    "vite": "^8.0.3"
+  }
+}
