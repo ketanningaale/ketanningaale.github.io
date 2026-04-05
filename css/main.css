@@ -215,6 +215,29 @@ button {
   pointer-events: none;
 }
 
+/* ============================================================
+   AMBIENT CANVAS — fixed page-wide background
+   ============================================================ */
+#ambient-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  /* Sits below everything except the very bottom stack */
+}
+
+/* Ambient background canvas */
+#preloader-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* Big KI initials */
 .preloader-ki {
   display: flex;
@@ -222,6 +245,8 @@ button {
   gap: 0.02em;
   user-select: none;
   pointer-events: none;
+  position: relative;
+  z-index: 1;
 }
 
 .preloader-ki-k,
@@ -261,6 +286,7 @@ button {
   bottom: 10vh;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1;
   width: min(420px, 80vw);
   display: flex;
   flex-direction: column;
@@ -810,25 +836,36 @@ body.cursor-click #cursor-outer {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 13vw, 14rem);
+  font-size: clamp(3.5rem, 12vw, 13rem);
   font-weight: 700;
   font-variation-settings: "wght" 700;
-  letter-spacing: -0.07em;
-  line-height: 0.85;
+  letter-spacing: -0.06em;
+  line-height: 1;
   text-transform: uppercase;
   margin-bottom: 36px;
-  overflow: hidden;
+  overflow: visible; /* never clip — let each line manage its own mask */
 }
 
+/* Each line is its own overflow:hidden mask */
 .hero-title-line {
   display: block;
-  transform: translateY(100%);
-  animation: slideInFromBottom 0.9s var(--ease-out) both;
+  overflow: hidden;
+  /* extra bottom padding so descenders (g, y, etc.) aren't clipped */
+  padding-bottom: 0.08em;
+  line-height: 0.92;
 }
 
-.hero-title-line:nth-child(1) { animation-delay: 0.2s; }
-.hero-title-line:nth-child(2) { animation-delay: 0.35s; }
-.hero-title-line:nth-child(3) { animation-delay: 0.5s; }
+/* Inner span starts off-screen and slides up */
+.hero-title-line > span {
+  display: block;
+  transform: translateY(110%);
+  animation: slideInFromBottom 0.9s var(--ease-out) both;
+  will-change: transform;
+}
+
+.hero-title-line:nth-child(1) > span { animation-delay: 0.2s; }
+.hero-title-line:nth-child(2) > span { animation-delay: 0.35s; }
+.hero-title-line:nth-child(3) > span { animation-delay: 0.5s; }
 
 .hero-title-dim {
   color: var(--fg-muted);

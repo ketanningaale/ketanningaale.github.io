@@ -58,6 +58,7 @@
 
   <!-- PRELOADER -->
   <div id="preloader" role="status" aria-label="Loading">
+    <canvas id="preloader-canvas" aria-hidden="true"></canvas>
     <div class="preloader-ki">
       <span class="preloader-ki-k">K</span>
       <span class="preloader-ki-i">I</span>
@@ -76,6 +77,9 @@
   <!-- CUSTOM CURSOR -->
   <div id="cursor-outer" aria-hidden="true"></div>
   <div id="cursor-dot"   aria-hidden="true"></div>
+
+  <!-- AMBIENT BACKGROUND CANVAS — fixed, behind all content -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
 
   <!-- GRAIN OVERLAY -->
   <div class="grain" aria-hidden="true"></div>
@@ -189,8 +193,8 @@
       <div class="hero-content">
         <p class="hero-eyebrow"><span class="reveal-mask" style="display:inline-block;vertical-align:middle;"><span data-reveal style="display:inline-block;">Analytics Engineer &middot; HealthTech &middot; Data &amp; AI</span></span></p>
         <h1 class="hero-title">
-          <span class="hero-title-line">Ketann</span>
-          <span class="hero-title-line hero-title-dim">Ingaale</span>
+          <span class="hero-title-line"><span>Ketann</span></span>
+          <span class="hero-title-line hero-title-dim"><span>Ingaale</span></span>
         </h1>
         <p class="hero-role">
           <span class="hero-role-prefix">&mdash;&nbsp;</span>

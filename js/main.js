@@ -8,9 +8,11 @@ import { initHero }                  from './hero.js';
 import { initScroll }                from './scroll.js';
 import { initInteractions }          from './interactions.js';
 import { initHackyText, initLinkHover } from './hacky-text.js';
+import { initPreloaderAmbient, initPageAmbient } from './ambient.js';
 
 // Preloader runs immediately (before DOM ready)
 initPreloader();
+initPreloaderAmbient();
 
 document.addEventListener('DOMContentLoaded', () => {
   initCursor();
@@ -19,4 +21,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initInteractions();
   initHackyText();
   initLinkHover();
+  initPageAmbient();
 });
