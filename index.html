@@ -45,20 +45,20 @@
   }
   </script>
 
-  <!-- Styles (Vite resolves from src/) -->
-  <link rel="stylesheet" href="src/css/animations.css" />
-  <link rel="stylesheet" href="src/css/main.css" />
+  <!-- Fonts are self-hosted via @font-face in main.css -->
 
-  <!-- JS entry point (Vite) -->
-  <script type="module" src="src/js/main.js"></script>
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/main.css" />
+
+  <!-- JS modules -->
+  <script type="module" src="js/main.js"></script>
 </head>
 <body>
 
-  <!-- THREE.JS WEBGL CANVAS — fixed, behind everything -->
-  <canvas id="webgl-canvas" aria-hidden="true"></canvas>
-
   <!-- PRELOADER -->
   <div id="preloader" role="status" aria-label="Loading">
+    <canvas id="preloader-canvas" aria-hidden="true"></canvas>
     <div class="preloader-ki">
       <span class="preloader-ki-k">K</span>
       <span class="preloader-ki-i">I</span>
@@ -77,6 +77,9 @@
   <!-- CUSTOM CURSOR -->
   <div id="cursor-outer" aria-hidden="true"></div>
   <div id="cursor-dot"   aria-hidden="true"></div>
+
+  <!-- AMBIENT BACKGROUND CANVAS — fixed, behind all content -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
 
   <!-- GRAIN OVERLAY -->
   <div class="grain" aria-hidden="true"></div>
@@ -180,6 +183,13 @@
 
     <!-- HERO -->
     <section id="hero" aria-label="Introduction">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+      <!-- Parallax depth layers -->
+      <div class="parallax-layer parallax-layer--1" aria-hidden="true"></div>
+      <div class="parallax-layer parallax-layer--2" aria-hidden="true"></div>
+      <div class="parallax-layer parallax-layer--3" aria-hidden="true"></div>
+
       <div class="hero-content">
         <p class="hero-eyebrow"><span class="reveal-mask" style="display:inline-block;vertical-align:middle;"><span data-reveal style="display:inline-block;">Analytics Engineer &middot; HealthTech &middot; Data &amp; AI</span></span></p>
         <h1 class="hero-title">
