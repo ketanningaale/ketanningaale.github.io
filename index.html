@@ -55,6 +55,11 @@
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/main.css" />
 
+  <!-- GSAP + plugins (loaded before module so globals are ready) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+
   <!-- JS modules -->
   <script type="module" src="js/main.js"></script>
 </head>
@@ -194,6 +199,13 @@
       <div class="parallax-layer parallax-layer--2" aria-hidden="true"></div>
       <div class="parallax-layer parallax-layer--3" aria-hidden="true"></div>
 
+      <!-- Floating ambient orbs -->
+      <div class="hero-orbs" aria-hidden="true">
+        <div class="hero-orb hero-orb--1"></div>
+        <div class="hero-orb hero-orb--2"></div>
+        <div class="hero-orb hero-orb--3"></div>
+      </div>
+
       <div class="hero-content">
         <p class="hero-eyebrow"><span class="reveal-mask" style="display:inline-block;vertical-align:middle;"><span data-reveal style="display:inline-block;">Analytics Engineer &middot; HealthTech &middot; Data &amp; AI</span></span></p>
         <h1 class="hero-title">
@@ -289,6 +301,7 @@
         <span class="section-number" data-reveal>02</span>
       </div>
       <div class="experience-list">
+        <div class="exp-timeline-line" aria-hidden="true"></div>
 
         <article class="experience-item" data-reveal data-reveal-delay="1">
           <span class="exp-index">01</span>
@@ -640,8 +653,11 @@
 
     <!-- CONTACT -->
     <section id="contact" aria-labelledby="contact-heading">
-      <p class="contact-label">Let's talk</p>
-      <h2 class="contact-title" id="contact-heading" data-reveal>Open to research<br>&amp; collaboration.</h2>
+      <p class="contact-label" data-split>Let's talk</p>
+      <h2 class="contact-title" id="contact-heading">
+        <span data-split>Open to research</span><br>
+        <span data-split data-split-delay="0.2">&amp; collaboration.</span>
+      </h2>
       <a
         class="contact-email"
         data-email="ketanningaale@gmail.com"

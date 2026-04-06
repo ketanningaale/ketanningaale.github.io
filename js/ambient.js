@@ -10,14 +10,15 @@ function createMeshRenderer(canvas, opts = {}) {
   if (!canvas) return null;
   const ctx = canvas.getContext('2d');
 
-  const SPACING   = opts.spacing   || 40;   // px between grid points
-  const DOT_R     = opts.dotRadius || 1;    // base dot radius
-  const LINE_ALPHA = opts.lineAlpha ?? 0.04; // connecting line opacity
-  const DOT_ALPHA  = opts.dotAlpha  ?? 0.12; // dot opacity
-  const WARP_AMP   = opts.warpAmp  || 12;   // displacement amplitude
-  const WARP_SPEED = opts.warpSpeed || 0.3;  // wave speed
-  const WARP_FREQ  = opts.warpFreq || 0.008; // wave spatial frequency
+  const SPACING    = opts.spacing    || 40;
+  const DOT_R      = opts.dotRadius  || 1;
+  const LINE_ALPHA = opts.lineAlpha  ?? 0.04;
+  const DOT_ALPHA  = opts.dotAlpha   ?? 0.12;
+  const WARP_AMP   = opts.warpAmp   || 12;
+  const WARP_SPEED = opts.warpSpeed || 0.3;
+  const WARP_FREQ  = opts.warpFreq  || 0.008;
   const DRAW_LINES = opts.drawLines ?? true;
+  const MOUSE_FX   = opts.mouseFx   ?? false; // enable on page canvas only
 
   let W, H, cols, rows;
 
@@ -35,21 +36,41 @@ function createMeshRenderer(canvas, opts = {}) {
   let scrollY = 0;
   window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
 
+  // Mouse tracking (page coordinates; canvas is fixed full-screen)
+  let mouseX = -9999, mouseY = -9999;
+  if (MOUSE_FX) {
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }, { passive: true });
+    document.addEventListener('mouseleave', () => {
+      mouseX = -9999; mouseY = -9999;
+    });
+  }
+
+  // Click ripples
+  const ripples = [];
+  if (MOUSE_FX) {
+    document.addEventListener('click', (e) => {
+      ripples.push({ x: e.clientX, y: e.clientY, r: 0, alpha: 0.35, maxR: 160 });
+    });
+  }
+
   function getPoint(col, row, t) {
     const baseX = col * SPACING - SPACING;
     const baseY = row * SPACING - SPACING;
-    // Two overlapping sine waves for organic displacement
     const dx = Math.sin(baseX * WARP_FREQ + t * WARP_SPEED + baseY * 0.003) * WARP_AMP
              + Math.sin(baseY * WARP_FREQ * 1.3 + t * WARP_SPEED * 0.7) * WARP_AMP * 0.5;
     const dy = Math.cos(baseY * WARP_FREQ + t * WARP_SPEED * 0.8 + baseX * 0.004) * WARP_AMP
              + Math.cos(baseX * WARP_FREQ * 0.9 + t * WARP_SPEED * 1.1) * WARP_AMP * 0.4;
-    // Subtle scroll-linked shift
     const scrollOffset = scrollY * 0.015;
     return {
       x: baseX + dx,
       y: baseY + dy + scrollOffset * (row / rows),
     };
   }
+
+  const MOUSE_RADIUS = 140; // px — brightening radius
 
   function draw(ts) {
     const t = ts * 0.001;
@@ -64,7 +85,7 @@ function createMeshRenderer(canvas, opts = {}) {
       }
     }
 
-    // Draw connecting lines (horizontal + vertical)
+    // Draw connecting lines
     if (DRAW_LINES) {
       ctx.strokeStyle = `rgba(255,255,255,${LINE_ALPHA})`;
       ctx.lineWidth = 0.5;
@@ -72,13 +93,11 @@ function createMeshRenderer(canvas, opts = {}) {
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
           const p = points[r][c];
-          // Horizontal line to next column
           if (c < cols - 1) {
             const pNext = points[r][c + 1];
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(pNext.x, pNext.y);
           }
-          // Vertical line to next row
           if (r < rows - 1) {
             const pBelow = points[r + 1][c];
             ctx.moveTo(p.x, p.y);
@@ -89,21 +108,75 @@ function createMeshRenderer(canvas, opts = {}) {
       ctx.stroke();
     }
 
-    // Draw dots at each grid intersection
-    ctx.fillStyle = `rgba(255,255,255,${DOT_ALPHA})`;
+    // Draw dots — with optional mouse-proximity brightening
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
         const p = points[r][c];
-        // Subtle size variation based on displacement
-        const dist = Math.sqrt(
+        const disp = Math.sqrt(
           Math.pow(p.x - (c * SPACING - SPACING), 2) +
           Math.pow(p.y - (r * SPACING - SPACING), 2)
         );
-        const sizeVar = 1 + dist / (WARP_AMP * 4);
+        const sizeVar = 1 + disp / (WARP_AMP * 4);
+
+        let alpha = DOT_ALPHA;
+        let radius = DOT_R * sizeVar;
+
+        if (MOUSE_FX && mouseX > -999) {
+          const dx = p.x - mouseX;
+          const dy = p.y - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < MOUSE_RADIUS) {
+            const strength = 1 - dist / MOUSE_RADIUS;
+            alpha  = DOT_ALPHA + strength * 0.55;
+            radius = DOT_R * sizeVar * (1 + strength * 1.2);
+          }
+        }
+
         ctx.beginPath();
-        ctx.arc(p.x, p.y, DOT_R * sizeVar, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
         ctx.fill();
       }
+    }
+
+    // Draw constellation lines near mouse
+    if (MOUSE_FX && mouseX > -999) {
+      ctx.lineWidth = 0.4;
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols - 1; c++) {
+          const p  = points[r][c];
+          const p2 = points[r][c + 1];
+          const dx = p.x - mouseX;
+          const dy = p.y - mouseY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < MOUSE_RADIUS * 0.7) {
+            const strength = (1 - dist / (MOUSE_RADIUS * 0.7)) * 0.2;
+            ctx.strokeStyle = `rgba(255,255,255,${strength})`;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    // Draw ripples
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      const rip = ripples[i];
+      rip.r     += 4;
+      rip.alpha *= 0.94;
+
+      if (rip.alpha < 0.01 || rip.r > rip.maxR) {
+        ripples.splice(i, 1);
+        continue;
+      }
+
+      ctx.beginPath();
+      ctx.arc(rip.x, rip.y, rip.r, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(255,255,255,${rip.alpha})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
     }
 
     requestAnimationFrame(draw);
@@ -144,7 +217,8 @@ export function initPageAmbient() {
     warpAmp: 10,
     warpSpeed: 0.2,
     warpFreq: 0.005,
-    drawLines: false, // dots only for the page bg — less visual noise
+    drawLines: false,
+    mouseFx: true,   // enable mouse proximity brightening + ripples
   });
   if (!renderer) return;
 

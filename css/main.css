@@ -1959,3 +1959,137 @@ footer {
   opacity: 1;
   transform: none;
 }
+
+/* ============================================================
+   GSAP ENHANCEMENTS
+   ============================================================ */
+
+/* Smooth scroll base (GSAP ScrollTo overrides per-click) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---- Hero floating orbs ---- */
+.hero-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero-orb--1 {
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle at center, rgba(96,165,250,0.07) 0%, transparent 70%);
+  filter: blur(50px);
+  top: -25%;
+  right: -15%;
+  opacity: 0.7;
+}
+
+.hero-orb--2 {
+  width: 42vw;
+  height: 42vw;
+  background: radial-gradient(circle at center, rgba(167,139,250,0.06) 0%, transparent 70%);
+  filter: blur(70px);
+  bottom: -15%;
+  left: -10%;
+  opacity: 0.6;
+}
+
+.hero-orb--3 {
+  width: 28vw;
+  height: 28vw;
+  background: radial-gradient(circle at center, rgba(240,171,252,0.05) 0%, transparent 70%);
+  filter: blur(60px);
+  top: 35%;
+  left: 22%;
+  opacity: 0.5;
+}
+
+/* ---- Experience timeline line ---- */
+.experience-list {
+  position: relative;
+}
+
+.exp-timeline-line {
+  position: absolute;
+  left: -30px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255,255,255,0.12) 8%,
+    rgba(255,255,255,0.12) 92%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.exp-timeline-dot {
+  position: absolute;
+  left: -34px;
+  top: 44px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.35);
+  pointer-events: none;
+}
+
+/* ---- Enhanced project card ---- */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* ---- GSAP char-split — no-JS fallback ---- */
+.no-js [data-split] {
+  /* ensure text remains visible without GSAP */
+  opacity: 1;
+}
+
+/* ---- Cursor trail canvas ---- */
+#cursor-trail {
+  mix-blend-mode: screen;
+}
+
+/* ---- Pub type pill glow ---- */
+.pub-type {
+  display: inline-block;
+  transition: background var(--t-fast), box-shadow var(--t-fast);
+}
+
+.pub-card:hover .pub-type {
+  box-shadow: 0 0 12px rgba(255,255,255,0.08);
+}
+
+/* ---- Skill item refined hover ---- */
+.skill-item {
+  transition: color var(--t-fast), transform var(--t-fast);
+}
+
+.skill-item:hover {
+  transform: translateX(4px);
+}
+
+/* ---- Contact section heading style ---- */
+.contact-title > span {
+  display: inline;
+}
