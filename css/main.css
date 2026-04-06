@@ -1596,7 +1596,7 @@ section {
 
 .contact-title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-size: clamp(1.6rem, 3.5vw, 3.2rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
