@@ -402,22 +402,37 @@
 
         <!-- Published Paper + Patent -->
         <article class="project-card" data-tilt data-reveal data-reveal-delay="2">
-          <p class="project-num">002 &middot; <span style="color:rgba(255,255,255,0.4);font-size:0.55rem;letter-spacing:0.12em;">PUBLISHED PAPER &middot; PATENT</span></p>
+          <p class="project-num">002 &middot; <span style="color:rgba(255,255,255,0.4);font-size:0.55rem;letter-spacing:0.12em;">PUBLISHED PAPER &middot; PATENT &middot; LIVE</span></p>
           <h3 class="project-title">Blockchain-Based Grievance Management System</h3>
-          <p class="project-desc">Proposed a decentralised grievance redressal system using Hyperledger Fabric, ensuring transparency, immutability, and tamper-proof handling of complaints via a hierarchical auto-escalation mechanism. Implemented with Flask, React, and PostgreSQL — increasing data security by 40%. Published in Springer (FICTA 2020) and awarded a patent (Publication No. 38/2019).</p>
+          <p class="project-desc">Production-ready decentralised grievance redressal system for educational institutes, built on Hyperledger Besu (private network) / Ethereum Sepolia with Solidity smart contracts (RoleManager, GrievanceSystem, GrievanceFactory), a FastAPI backend, and a Next.js 14 frontend. Features role-based access (student, committee, HoD, principal, admin), immutable on-chain audit trail, keccak256 anonymous submissions, IPFS document storage via Pinata, auto-escalation via APScheduler, and a full CI/CD pipeline. 45 Hardhat tests with full lifecycle coverage. Published in Springer (FICTA 2020) and awarded a patent (Publication No. 38/2019).</p>
           <ul class="project-tags" aria-label="Technologies">
-            <li class="project-tag">Hyperledger Fabric</li>
-            <li class="project-tag">Flask</li>
-            <li class="project-tag">React</li>
-            <li class="project-tag">PostgreSQL</li>
-            <li class="project-tag">Blockchain</li>
+            <li class="project-tag">Solidity</li>
+            <li class="project-tag">Hyperledger Besu</li>
+            <li class="project-tag">FastAPI</li>
+            <li class="project-tag">Next.js 14</li>
+            <li class="project-tag">Firebase</li>
+            <li class="project-tag">IPFS</li>
           </ul>
-          <a href="https://doi.org/10.1007/978-981-15-5788-0_20" target="_blank" rel="noopener" class="project-link" data-cursor-hover>
-            Read Paper &mdash; Springer / FICTA 2020
-            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+          <div style="display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center;">
+            <a href="https://blockchain-based-grievance-manageme.vercel.app" target="_blank" rel="noopener" class="project-link" data-cursor-hover>
+              Live Demo
+              <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="https://github.com/ketanningaale/blockchain_based_grievance_management_system" target="_blank" rel="noopener" class="project-link" data-cursor-hover>
+              GitHub
+              <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="https://doi.org/10.1007/978-981-15-5788-0_20" target="_blank" rel="noopener" class="project-link" data-cursor-hover>
+              Springer / FICTA 2020
+              <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
         </article>
 
         <article class="project-card" data-tilt data-reveal data-reveal-delay="3">
@@ -478,6 +493,50 @@
           <span class="project-link" style="color:rgba(255,255,255,0.35);">
             Guide: Prof. Dr. Ajitkumar Shitole &middot; Savitribai Phule Pune University
           </span>
+        </article>
+
+        <!-- H.A.N.U.M.A.N. -->
+        <article class="project-card project-card--featured" data-tilt data-reveal data-reveal-delay="1">
+          <p class="project-num">007 &middot; <span style="color:rgba(255,255,255,0.4);font-size:0.55rem;letter-spacing:0.12em;">PERSONAL AI SYSTEM</span></p>
+          <h3 class="project-title">H.A.N.U.M.A.N.</h3>
+          <p class="project-desc" style="margin-bottom:0.5rem;font-style:italic;color:rgba(255,255,255,0.45);font-size:0.7rem;">Honestly A Noble Unit Maintaining All Networks</p>
+          <p class="project-desc">A fully local, voice-first AI assistant inspired by J.A.R.V.I.S. and the Ramayana. HANUMAN detects your presence via RTSP camera, greets you first (no wake word), and speaks in a British neural voice. Features adaptive volume based on background noise and distance, face recognition with unknown-face alerts, clap-activation gestures, persistent SQLite memory across sessions, and full tool use — web search, Google Calendar, Gmail, smart lights via Home Assistant, and file management. Dual LLM architecture: Ollama (llama3.2:3b, fully offline) as primary with Claude API as vision/MCP fallback. Designed from day one to migrate from MacBook M4 to Raspberry Pi 5 — switching hardware is a config change, not a code change.</p>
+          <ul class="project-tags" aria-label="Technologies">
+            <li class="project-tag">Python</li>
+            <li class="project-tag">Ollama</li>
+            <li class="project-tag">Claude API</li>
+            <li class="project-tag">faster-whisper</li>
+            <li class="project-tag">OpenCV</li>
+            <li class="project-tag">FastAPI</li>
+            <li class="project-tag">React</li>
+            <li class="project-tag">Raspberry Pi</li>
+          </ul>
+          <a href="https://github.com/ketanningaale/H.A.N.U.M.A.N." target="_blank" rel="noopener" class="project-link" data-cursor-hover>
+            GitHub
+            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Gensim Open Source Contribution -->
+        <article class="project-card" data-tilt data-reveal data-reveal-delay="2">
+          <p class="project-num">008 &middot; <span style="color:rgba(255,255,255,0.4);font-size:0.55rem;letter-spacing:0.12em;">OPEN SOURCE CONTRIBUTION</span></p>
+          <h3 class="project-title">Gensim — FastText Early Validation</h3>
+          <p class="project-desc">Contributed a bug fix to <em>gensim</em>, the widely-used Python NLP library. Previously, loading a Facebook FastText <code>.bin</code> file trained with an unsupported configuration (supervised model, softmax loss, or one-vs-all loss) would fail deep inside binary parsing with a cryptic, uninformative error. This contribution adds <code>_check_supported_model()</code> in <code>_fasttext_bin.py</code> — early validation of the parsed header immediately after reading — raising a descriptive <code>NotImplementedError</code> before any further processing. Closes issue #3179. Includes 4 unit tests covering all unsupported and supported configurations.</p>
+          <ul class="project-tags" aria-label="Technologies">
+            <li class="project-tag">Python</li>
+            <li class="project-tag">NLP</li>
+            <li class="project-tag">FastText</li>
+            <li class="project-tag">gensim</li>
+            <li class="project-tag">Open Source</li>
+          </ul>
+          <a href="https://github.com/piskvorky/gensim/pull/3650" target="_blank" rel="noopener" class="project-link" data-cursor-hover>
+            PR #3650 &mdash; piskvorky/gensim
+            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </article>
 
       </div>
